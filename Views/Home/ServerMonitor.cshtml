@@ -109,7 +109,7 @@ const config = {
     tooltip:false,
       title: {
         display: true,
-        text: 'IDTP Server Monitor Dashboard'
+        text: 'IDTP Server Health Monitoring Dashboard'
       },
     },
     responsive: true,    
@@ -192,13 +192,14 @@ loadData = function () {
             $.each(data, function (index, item) {
               if(item.serverHeartbeat==false){
                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                
-                myChart.update();
+                //myChart.update();
               }
               else{
                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
-                myChart.update();
+                //myChart.update();
               }                
             });  
+            myChart.update();
                      
         }
     });

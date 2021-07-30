@@ -15649,6 +15649,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\MonitorRoutes.cshtml",
+      "TargetPath": "Views\\Home\\MonitorRoutes.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\ServerMonitor.cshtml",
       "TargetPath": "Views\\Home\\ServerMonitor.cshtml",
       "FileKind": "mvc"

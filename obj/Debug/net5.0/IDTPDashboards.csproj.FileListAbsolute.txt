@@ -40,3 +40,4 @@ C:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\IDTPDashboards.genruntim
 C:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\IDTPDashboards.csproj.CopyComplete
 C:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\Razor\Views\Home\ServerMonitor.cshtml.g.cs
 C:\IDTPDashboardProject\IDTPDashboards\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\Razor\Views\Home\MonitorRoutes.cshtml.g.cs

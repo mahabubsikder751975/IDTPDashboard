@@ -1,0 +1,93 @@
+﻿@model List<ServerHealthDetails>
+@{
+    ViewData["Title"] = "IDTP Server Monitor";
+}
+
+<div class="container">
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+
+<script>
+ 
+const labels = ['1 AM','2 AM','3 AM','4 AM','5 AM','6 AM','7 AM','8 AM','9 AM', '10 AM','11 AM', '12 PM'];
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Router 1',
+      data: [450,345,123,23,456,76,421,132,453,543,324,241],
+      borderColor: '#4CB5F5',
+      backgroundColor: '#4CB5F5',
+      borderWidth: 15
+    },
+    {
+      label: 'Router 2',
+      data: [250,145,56,67,256,176,121,89,153,243,124,41],
+      borderColor: '#EA6A47',
+      backgroundColor: '#EA6A47',
+    },
+
+    {
+      label: 'Router 3',
+      data: [50,45,23,23,56,76,21,32,53,43,24,41],
+      borderColor: '#6AB187',
+      backgroundColor: '#6AB187',
+    }
+  ]
+};
+
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Router Oriented Traffic Flow Analysis'
+      }
+    }
+  },
+};
+
+Chart.defaults.font.family='Helvetica'
+Chart.defaults.font.size=18
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx,config);
+
+
+@* loadData = function () {
+
+ $.ajax({
+        url: '/Home/GetServerData',
+        type: 'POST',        
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {     
+            // loop through the All data and fill the dropdown
+            $.each(data, function (index, item) {
+              if(item.serverHeartbeat==false){
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                
+                //myChart.update();
+              }
+              else{
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+                //myChart.update();
+              }                
+            });  
+            myChart.update();
+                     
+        }
+    });
+}; *@
+
+@* setInterval(function() {  
+     loadData()
+}, 5000); *@
+
+</script>
