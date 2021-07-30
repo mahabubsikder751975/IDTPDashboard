@@ -1,0 +1,296 @@
+﻿@model List<ServerHealthDetails>
+@{
+    ViewData["Title"] = "IDTP Server Monitor";
+}
+
+<div class="container">
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+
+<script>
+   
+const labels = ["Rack 1","Rack 2","Rack 3"];
+let origindatasets = [
+    {
+      label: 'Database',
+      data:  [45,45,45],
+      backgroundColor: [
+                '#234F1E',
+                '#234F1E',
+                '#234F1E'
+            ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    {
+      label: 'API Server 3',
+      data:  [45,45,45],
+      backgroundColor: [
+                '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    {
+      label: 'API Server 2',
+      data: [45,45,45],
+      backgroundColor: [
+                '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+     {
+      label: 'API Server 1',
+      data: [45,45,45],
+      backgroundColor: [
+               '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    
+    {
+      label: 'Portal Server 2',
+      data: [45,45,45],
+      backgroundColor: [
+                '#3CB043',
+                '#3CB043',
+                '#3CB043'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+     {
+      label: 'Portal Server 1',
+      data: [45,45,45],
+      backgroundColor: [
+                '#3CB043',
+                '#3CB043',
+                '#3CB043'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    }
+  ]
+
+let copieddatasets = JSON.parse(JSON.stringify(origindatasets));
+
+
+@* let duplicatedatasets = [
+    {
+      label: 'Database',
+      data:  [45,45,45],
+      backgroundColor: [
+                '#234F1E',
+                '#234F1E',
+                '#234F1E'
+            ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    {
+      label: 'API Server 3',
+      data:  [45,45,45],
+      backgroundColor: [
+                '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    {
+      label: 'API Server 2',
+      data: [45,45,45],
+      backgroundColor: [
+                '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+     {
+      label: 'API Server 1',
+      data: [45,45,45],
+      backgroundColor: [
+               '#597D35',
+                '#597D35',
+                '#597D35'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+    
+    {
+      label: 'Portal Server 2',
+      data: [45,45,45],
+      backgroundColor: [
+                '#3CB043',
+                '#3CB043',
+                '#3CB043'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    },
+     {
+      label: 'Portal Server 1',
+      data: [45,45,45],
+      backgroundColor: [
+                '#3CB043',
+                '#3CB043',
+                '#3CB043'
+                ],
+      stack: 'Stack 0',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderSkipped: false,
+    }
+  ] *@
+
+
+const data1 = {
+  labels: labels,
+  datasets: origindatasets,
+};
+
+const config = {
+  type: 'bar',
+  data: data1,
+  options: {    
+    plugins: {
+    tooltip:false,
+      title: {
+        display: true,
+        text: 'IDTP Server Monitor Dashboard'
+      },
+    },
+    responsive: true,    
+    interaction: {
+      intersect: false,
+    },
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        display: false,
+        stacked: true,
+         ticks: {
+                    font: {
+                        family: 'Helvetica', // Your font family
+                        size: 18,
+                    }
+                }
+
+      }
+    },
+    animation: {
+    onComplete: function() {
+        let ctx = this.$context.chart.ctx;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        let chart = this;
+        let datasets = this.config.data.datasets;
+        let sum=new Array();
+        datasets.forEach(function (dataset, i) {
+            ctx.font = "18px Helvetica";
+
+            switch ( chart.getDatasetMeta(i).type ) {
+                case "line":
+                    ctx.fillStyle = "Black";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                        ctx.fillText(datasets[i].data[j], p.x, p.y - 20);
+                    });
+                    break;
+                case "bar":
+                    ctx.fillStyle = "White";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                        ctx.fillText(datasets[i].label, p.x, p.y + 20);
+                    });
+                    break;
+                case "horizontalBar":
+                    ctx.fillStyle = "Black";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                    if (sum[j]== null) { sum[j] = 0; }
+                    sum[j]=sum[j]+parseFloat(datasets[i].data[j]);
+                    if (i==datasets.length-1) {ctx.fillText(sum[j], p.x+10, p.y);}
+
+                    });
+
+                    break;
+            }
+        });
+    }
+  }
+  }
+};
+
+Chart.defaults.font.family='Helvetica'
+Chart.defaults.font.size=18
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx,config);
+
+
+loadData = function () {
+
+ $.ajax({
+        url: '/Home/GetServerData',
+        type: 'POST',        
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {     
+            // loop through the All data and fill the dropdown
+            $.each(data, function (index, item) {
+              if(item.serverHeartbeat==false){
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                
+                myChart.update();
+              }
+              else{
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+                myChart.update();
+              }                
+            });  
+                     
+        }
+    });
+};
+
+setInterval(function() {
+  @* if(new Date().getSeconds() === 20) { *@
+     loadData()
+  @* } *@
+}, 5000);
+
+</script>
