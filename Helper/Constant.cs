@@ -2,12 +2,10 @@
 {
     public static class Constants
     {        
-        public static string ServerUrl = "https://localhost:5003/";
-        
-
+                
         public static class APIEndPoints
         {
-            public static readonly string GETIDTPSERVERDETAIL = ServerUrl + "IDTPServer";            
+            public static readonly string TESTHELLO = "TestHello";            
         }
 
         public const string NotFound = "404";
