@@ -31,6 +31,32 @@ namespace IDTPDashboards.Helper
             }
         }
         
+        public  static string Get(Uri uri)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var response =  client.GetAsync(uri);
+                string responseBody =  response.Result.Content.ReadAsStringAsync().Result;
+
+                // // Initialization of HttpClient
+                // using var client = new HttpClient();
+
+                // using HttpResponseMessage response = await client.GetAsync(uri).Result;
+                // //response.EnsureSuccessStatusCode();
+
+                // // Read the response
+                // var result = response.Content.ReadAsStringAsync().Result;
+
+                 return responseBody;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + " Url: " + uri.AbsoluteUri);
+            }
+        }
+
         
     }
 }

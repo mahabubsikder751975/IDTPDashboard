@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\IDTPDashboardProject\\IDTPDashboards\\IDTPDashboards.csproj",
+      "projectUniqueName": "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
       "projectName": "IDTPDashboards",
-      "projectPath": "C:\\IDTPDashboardProject\\IDTPDashboards\\IDTPDashboards.csproj",
+      "projectPath": "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
       "packagesPath": "C:\\Users\\mahab\\.nuget\\packages\\",
-      "outputPath": "C:\\IDTPDashboardProject\\IDTPDashboards\\obj\\",
+      "outputPath": "c:\\IDTPDashboard\\IDTPDashboard\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mahab\\AppData\\Roaming\\NuGet\\NuGet.Config"

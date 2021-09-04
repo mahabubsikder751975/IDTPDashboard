@@ -36,7 +36,7 @@ namespace IDTPDashboards.Services
                         {
                             Date = DateTime.Now,
                             TemperatureC = 0,
-                            ServerHeartbeat = IsHealthy(idtpsvrs[k].IPAddress),                            
+                            ServerHeartbeat = IsMachineActive(idtpsvrs[k].IPAddress),                            
                             ServerName = IDTPServers[j],  
                             RackName = IDTPRacks[i],
                             ServerRackId=j,  
@@ -47,19 +47,38 @@ namespace IDTPDashboards.Services
             } 
 
             // //For Demo
-            // int index = rng.Next(servers.Count);           
-            // servers.ToArray()[index].ServerHeartbeat=false;
+            //   int index = rng.Next(servers.Count);           
+            //   servers.ToArray()[index].ServerHeartbeat=false;
             
             return servers;
            
         }
 
+        private bool IsMachineActive(string url) 
+        {
+
+            bool output = true;
+            var ping = new System.Net.NetworkInformation.Ping();
+
+            var result = ping.Send(url);
+
+            if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
+                output = false;
+
+            return output;
+        }
+
+
+
         private bool IsHealthy(string ipadress)   
         {
             try{
-                //ToDo 
-                var result = HttpClientHelper.Post(new Uri(ipadress+'/'+Constants.APIEndPoints.TESTHELLO), JsonConvert.SerializeObject(null));
-                var responseObj = JsonConvert.DeserializeObject<List<ServerHealthDetails>>(result);
+
+                // //ToDo 
+                var url=new Uri(ipadress+'/'+Constants.APIEndPoints.TESTHELLO);
+                var response = HttpClientHelper.Get(url);
+
+
                 return true;
             }
             catch(Exception ex){

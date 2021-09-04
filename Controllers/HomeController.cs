@@ -38,8 +38,9 @@ namespace IDTPDashboards.Controllers
         
         public dynamic GetServerData(){
             DashboardManager dashboardManager = new();
+            var data = dashboardManager.GetMachineCounters(_idtpsvrs);
 
-            return dashboardManager.GetMachineCounters(_idtpsvrs);
+            return data;
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
