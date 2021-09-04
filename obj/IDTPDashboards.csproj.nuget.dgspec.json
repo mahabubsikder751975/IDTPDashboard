@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj": {}
+    "C:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj": {}
   },
   "projects": {
-    "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj": {
+    "C:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
+        "projectUniqueName": "C:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
         "projectName": "IDTPDashboards",
-        "projectPath": "c:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
+        "projectPath": "C:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
         "packagesPath": "C:\\Users\\mahab\\.nuget\\packages\\",
-        "outputPath": "c:\\IDTPDashboard\\IDTPDashboard\\obj\\",
+        "outputPath": "C:\\IDTPDashboard\\IDTPDashboard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mahab\\AppData\\Roaming\\NuGet\\NuGet.Config"
