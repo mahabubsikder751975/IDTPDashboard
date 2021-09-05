@@ -94,13 +94,8 @@ E:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\IDTPDashboards.dll
 E:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\ref\IDTPDashboards.dll
 E:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\IDTPDashboards.pdb
 E:\IDTPDashboardProject\IDTPDashboards\obj\Debug\net5.0\IDTPDashboards.genruntimeconfig.cache
-C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\Published\web.config
 C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\appsettings.Development.json
 C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\appsettings.json
-C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\Published\appsettings.Development.json
-C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\Published\appsettings.json
-C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\Published\IDTPDashboards.deps.json
-C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\Published\IDTPDashboards.runtimeconfig.json
 C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\IDTPDashboards.exe
 C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\IDTPDashboards.deps.json
 C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\IDTPDashboards.runtimeconfig.json
@@ -142,3 +137,8 @@ C:\IDTPDashboard\IDTPDashboard\obj\Debug\net5.0\IDTPDashboards.dll
 C:\IDTPDashboard\IDTPDashboard\obj\Debug\net5.0\ref\IDTPDashboards.dll
 C:\IDTPDashboard\IDTPDashboard\obj\Debug\net5.0\IDTPDashboards.pdb
 C:\IDTPDashboard\IDTPDashboard\obj\Debug\net5.0\IDTPDashboards.genruntimeconfig.cache
+C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\web.config
+C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.Development.json
+C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.json
+C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.deps.json
+C:\IDTPDashboard\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.runtimeconfig.json

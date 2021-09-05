@@ -66,7 +66,7 @@ let origindatasets = [
     },
     
     {
-      label: 'Portal Server 2',
+      label: 'Portal Server',
       data: [45,45,45],
       backgroundColor: [
                 '#3CB043',
@@ -79,12 +79,12 @@ let origindatasets = [
       borderSkipped: false,
     },
      {
-      label: 'Portal Server 1',
+      label: 'LB Server',
       data: [45,45,45],
       backgroundColor: [
-                '#3CB043',
-                '#3CB043',
-                '#3CB043'
+                '#4F7942',
+                '#4F7942',
+                '#4F7942'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -191,7 +191,7 @@ loadData = function () {
             // loop through the All data and fill the dropdown
             $.each(data, function (index, item) {
               if(item.serverHeartbeat==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#CC7722";                
                 //myChart.update();
               }
               else{

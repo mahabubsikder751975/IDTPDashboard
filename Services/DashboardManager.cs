@@ -15,7 +15,7 @@ namespace IDTPDashboards.Services
     {
          private static readonly string[] IDTPServers = new[]
         {
-            "Database Server", "API Server 1", "API Server 2", "API Server 3", "Portal Server 1", "Portal Server 2"
+            "Database Server", "API Server 1", "API Server 2", "API Server 3", "Portal Server", "LB Server"
         };
 
         private static readonly string[] IDTPRacks = new[]
