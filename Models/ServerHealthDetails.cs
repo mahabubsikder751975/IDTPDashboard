@@ -22,6 +22,10 @@ namespace IDTPDashboards.Models
 
         // public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
         public bool ServerHeartbeat { get; set; }
+        public bool IsHelloTested { get; set; }
+        public bool IsInsertTested { get; set; }
+        public bool IsDBConnected { get; set; }
+        
         public string ServerName { get; set; }
         public string RackName { get; set; }
         public int ServerRackId { get; set; }

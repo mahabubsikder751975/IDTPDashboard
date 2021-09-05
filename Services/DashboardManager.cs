@@ -36,7 +36,9 @@ namespace IDTPDashboards.Services
                         {
                             Date = DateTime.Now,
                             TemperatureC = 0,
-                            ServerHeartbeat = IsMachineActive(idtpsvrs[k].IPAddress),                            
+                            ServerHeartbeat = IsMachinelive(idtpsvrs[k].IPAddress),
+                            IsHelloTested = TestHello(idtpsvrs[k].IPAddress),  
+                            IsInsertTested = TestDataInsert(idtpsvrs[k].IPAddress),
                             ServerName = IDTPServers[j],  
                             RackName = IDTPRacks[i],
                             ServerRackId=j,  
@@ -54,13 +56,13 @@ namespace IDTPDashboards.Services
            
         }
 
-        private bool IsMachineActive(string url) 
+        private bool IsMachinelive(string ipadress) 
         {
 
             bool output = true;
             var ping = new System.Net.NetworkInformation.Ping();
-
-            var result = ping.Send(url);
+            var ipaddr = ipadress.Split(':')[0];
+            var result = ping.Send(ipaddr);
 
             if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
                 output = false;
@@ -70,7 +72,7 @@ namespace IDTPDashboards.Services
 
 
 
-        private bool IsHealthy(string ipadress)   
+        private bool TestHello(string ipadress)   
         {
             try{
 
@@ -85,9 +87,27 @@ namespace IDTPDashboards.Services
                 return false;
 
             }
-      
+
         } 
 
+        private bool TestDataInsert(string ipadress)   
+        {
+            try{
+
+                // //ToDo 
+                var url=new Uri(ipadress+'/'+Constants.APIEndPoints.TESTINSERT);
+                var response = HttpClientHelper.Post(url,"Insert data");
+
+
+                return true;
+            }
+            catch(Exception ex){
+                return false;
+
+            }
+
+        } 
+        
 
     }
 }

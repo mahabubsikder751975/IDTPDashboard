@@ -6,6 +6,7 @@
         public static class APIEndPoints
         {
             public static readonly string TESTHELLO = "TestHello";            
+            public static readonly string TESTINSERT = "TestInsert"; 
         }
 
         public const string NotFound = "404";
