@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L9xLpdvhzQXeTHOQxWpMdYH4XCGEB53w2DxErHyiXMNpHKnwSSPTcY/pfECzZ2T02sjxjFvGk/dnh07iNTe5JQ==",
+  "dgSpecHash": "66pzh2jRJwx11RaE+k79lVB/KoWMk+W813miiqg1eXzxt4u/jE/t/1h1MdSfK95VpppMfwkZIydBevpDQprgbA==",
   "success": true,
-  "projectFilePath": "C:\\IDTPDashboard\\IDTPDashboard\\IDTPDashboards.csproj",
+  "projectFilePath": "C:\\IDTPDashboard\\IDTPDashboards.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mahab\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

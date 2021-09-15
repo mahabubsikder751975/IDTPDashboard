@@ -10,6 +10,7 @@ using IDTPDashboards.Helper;
 using Newtonsoft.Json;
 using IDTPDashboards.Services;
 using Microsoft.Extensions.Configuration;
+using System.Web;
 
 namespace IDTPDashboards.Controllers
 {
@@ -36,12 +37,29 @@ namespace IDTPDashboards.Controllers
             return View();
         }
         
+        public IActionResult ICPNetworkMonitor()
+        { 
+            // var icpJsonData = GetICPServerData();                    
+            // ViewData["icpJsonData"] = JsonConvert.SerializeObject(icpJsonData); 
+            //var passData = JsonConvert.SerializeObject(icpJsonData); 
+
+            return View();
+        }
+
         public dynamic GetServerData(){
             DashboardManager dashboardManager = new();
             var data = dashboardManager.GetMachineCounters(_idtpsvrs);
 
             return data;
         }
+
+         public dynamic GetICPServerData(){
+            DashboardManager dashboardManager = new();           
+            var returnData = dashboardManager.GetICPMachineCounters();       
+
+            return returnData;            
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

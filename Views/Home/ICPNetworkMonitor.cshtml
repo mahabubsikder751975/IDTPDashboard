@@ -1,0 +1,151 @@
+@* @model List<ICPServerIP>
+@{
+    ViewData["Title"] = "IDTP Server Monitor";
+} *@
+
+
+@* <div style="width: 50vw; height: 50vw; position: absolute">
+     <canvas id="canvas" style="width: 50vw; height: 50vw; position: absolute"></canvas>
+</div> *@
+
+@* <div><canvas id="dh"></canvas></div>
+<div><canvas id="dv"></canvas></div>
+<div><canvas id="f"></canvas></div> *@
+
+<div class="container">
+    <canvas id="f" width="400" height="200"></canvas>
+</div>
+
+<script>  
+
+
+loadData = function () {
+                $.ajax({
+                url: '/Home/GetICPServerData',
+                type: 'POST',        
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (icpdata) {     
+                    // loop through the All data and fill the dropdown     
+                    //data = JSON.stringify(icpdata)
+                    
+                    @* createChart(icpdata, "dh", "dendogram", "horizontal"); *@
+
+                    @* createChart(icpdata, "dv", "dendogram", "vertical"); *@
+                    
+                    createChart(icpdata, "f", "forceDirectedGraph", "vertical");
+                    
+ 
+                }
+            });
+        };
+
+loadData();
+
+function createChart(nodes, id, type, orientation) {
+  new Chart(document.getElementById(id).getContext("2d"), {
+    type,
+    data: {
+      labels: nodes.map((d) => d.name),
+      datasets: [
+        {
+          @* pointBackgroundColor: "steelblue", *@
+          pointBackgroundColor: "steelblue",  
+          pointRadius: 10,
+          data: nodes.map((d) => Object.assign({}, d))
+        }
+      ]
+    },
+    options: {
+      dragData: true,
+      dragX: true,
+      tree: {
+        orientation
+      },
+      layout: {
+        padding: {
+          top: 5,
+          left: 5,
+          right: 40,
+          bottom: 20
+        }
+      },
+      plugins: {
+        tooltip:false,
+        title: {
+          display: true,
+          text: 'ICP Network with IDTP Server'                                 
+        },
+        legend: {
+          display: false
+        },
+        datalabels: {
+          align: orientation === "vertical" ? "bottom" : "right",
+          offset: 6,
+          backgroundColor: "white",          
+          formatter: (v) => {
+            return v.name;
+          }
+        }
+      },    
+    animation: {
+    onComplete: function() {
+        let ctx = this.$context.chart.ctx;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";        
+        let chart = this;
+        let datasets = this.config.data.datasets;
+        let sum=new Array();
+        datasets.forEach(function (dataset, i) {
+            ctx.font = "bold 18px Helvetica";
+            //ctx.fillStyle = "#0a1414";
+            switch ( chart.getDatasetMeta(i).type ) {
+              case "forceDirectedGraph":
+                    ctx.fillStyle = "#9c9c9c";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                        ctx.fillText(datasets[i].data[j].name, p.x, p.y);
+                    });
+                    break;
+                case "line":
+                    ctx.fillStyle = "Black";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                        ctx.fillText(datasets[i].data[j], p.x, p.y - 20);
+                    });
+                    break;
+                case "bar":
+                    ctx.fillStyle = "White";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                        ctx.fillText(datasets[i].label, p.x, p.y + 20);
+                    });
+                    break;
+                case "horizontalBar":
+                    ctx.fillStyle = "Black";
+                    chart.getDatasetMeta(i).data.forEach(function (p, j) {
+                    if (sum[j]== null) { sum[j] = 0; }
+                    sum[j]=sum[j]+parseFloat(datasets[i].data[j]);
+                    if (i==datasets.length-1) {ctx.fillText(sum[j], p.x+10, p.y);}
+
+                    });
+
+                    break;
+            }
+        });
+    }
+  }
+  
+    }
+  });
+}
+Chart.defaults.font.family='Helvetica'
+Chart.defaults.font.size=18
+
+ </script>
+@* 
+ fetch(data)
+  .then((r) => r.json())
+  .then((nodes) => {
+    createChart(nodes, "dh", "dendogram", "horizontal");
+    createChart(nodes, "dv", "dendogram", "vertical");
+    createChart(nodes, "f", "forceDirectedGraph", "vertical");
+  });
+      *@

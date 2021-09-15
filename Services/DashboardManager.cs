@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -107,6 +108,14 @@ namespace IDTPDashboards.Services
             }
 
         } 
+
+        public dynamic GetICPMachineCounters(){
+           
+            var jsonData = File.ReadAllText("tree.json");
+            // IList<ICPServerIP> iCPServerIPs = JsonConvert.DeserializeObject<IList<ICPServerIP>>(jsonData);
+            //return JsonConvert.SerializeObject(jsonData);
+            return jsonData;
+        }
         
 
     }
