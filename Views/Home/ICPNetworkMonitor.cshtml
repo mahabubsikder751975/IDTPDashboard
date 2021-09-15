@@ -50,8 +50,9 @@ function createChart(nodes, id, type, orientation) {
       datasets: [
         {
           @* pointBackgroundColor: "steelblue", *@
-          pointBackgroundColor: "steelblue",  
-          pointRadius: 10,
+          pointBackgroundColor: "#597D35",  
+          //pointRadius: 10,
+          pointHoverRadius: 10,
           data: nodes.map((d) => Object.assign({}, d))
         }
       ]
@@ -64,7 +65,7 @@ function createChart(nodes, id, type, orientation) {
       },
       layout: {
         padding: {
-          top: 5,
+          top: 20,
           left: 5,
           right: 40,
           bottom: 20
@@ -98,10 +99,9 @@ function createChart(nodes, id, type, orientation) {
         let sum=new Array();
         datasets.forEach(function (dataset, i) {
             ctx.font = "bold 18px Helvetica";
-            //ctx.fillStyle = "#0a1414";
             switch ( chart.getDatasetMeta(i).type ) {
               case "forceDirectedGraph":
-                    ctx.fillStyle = "#9c9c9c";
+                    ctx.fillStyle = "#9c9c9c";                    
                     chart.getDatasetMeta(i).data.forEach(function (p, j) {
                         ctx.fillText(datasets[i].data[j].name, p.x, p.y);
                     });
