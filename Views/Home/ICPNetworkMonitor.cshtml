@@ -27,37 +27,27 @@ createNetChart = function () {
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (icpdata) {     
-                    // loop through the All data and fill the dropdown     
-                    //data = JSON.stringify(icpdata)
-                    
-                    @* createChart(icpdata, "dh", "dendogram", "horizontal"); *@
-
-                    @* createChart(icpdata, "dv", "dendogram", "vertical"); *@
-                    
+                    originalpointcolor = new Array(icpdata.length).fill("#13fb03");
+                    copiedpointcolor = JSON.parse(JSON.stringify(originalpointcolor));
                     createChart(icpdata, "forceDirectedGraph", "forceDirectedGraph", "vertical");
-                    
- 
                 }
             });
         };
 
 createNetChart();
 
- let originalpointcolor = ["#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03"];
- 
-let copiedpointcolor = JSON.parse(JSON.stringify(originalpointcolor));
+let originalpointcolor=[];
+let copiedpointcolor;
 
-function createChart(nodes, id, type, orientation) {
+function createChart(nodes, id, type, orientation) {    
   myChart=new Chart(document.getElementById(id).getContext("2d"), {
     type,
     data: {
       labels: nodes.map((d) => d.name),
       datasets: [
-        {
-          @* pointBackgroundColor: "steelblue", *@
-         // pointBackgroundColor: "#13fb03",            
-          pointRadius: 10,
-          //pointHoverRadius: 10,
+        {          
+          pointRadius: 20,
+          pointHoverRadius: 30,
           data: nodes.map((d) => Object.assign({}, d)),
           pointBackgroundColor: copiedpointcolor
         }
@@ -157,7 +147,7 @@ loadData = function () {
             $.each(data, function (index, item) {
 
               if(item.isHelloTested==false){
-                myChart.config.data.datasets[0]['pointBackgroundColor'][index] = 'Red'; 
+                myChart.config.data.datasets[0]['pointBackgroundColor'][index] = '#f1e740'; 
               }
               else{
                  myChart.config.data.datasets[0]['pointBackgroundColor'][index] = originalpointcolor[index];                
