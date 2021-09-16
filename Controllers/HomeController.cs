@@ -53,11 +53,18 @@ namespace IDTPDashboards.Controllers
             return data;
         }
 
-         public dynamic GetICPServerData(){
+         public dynamic GetICPNetChartData(){
             DashboardManager dashboardManager = new();           
-            var returnData = dashboardManager.GetICPMachineCounters();       
+            var returnData = dashboardManager.GetICPNetChartData();       
 
             return returnData;            
+        }
+
+        public dynamic GetICPServerData(){
+            DashboardManager dashboardManager = new();
+            var data = dashboardManager.GetICPMachineCounters();
+
+            return data;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

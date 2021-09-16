@@ -4,8 +4,8 @@
 } *@
 
 
-@* <div style="width: 50vw; height: 50vw; position: absolute">
-     <canvas id="canvas" style="width: 50vw; height: 50vw; position: absolute"></canvas>
+@* <div style="width: 50vw; height: 50vw;">
+     <canvas id="f" style="width: 50vw; height: 50vw;"></canvas>
 </div> *@
 
 @* <div><canvas id="dh"></canvas></div>
@@ -13,15 +13,16 @@
 <div><canvas id="f"></canvas></div> *@
 
 <div class="container">
-    <canvas id="f" width="400" height="200"></canvas>
+    <canvas id="forceDirectedGraph"></canvas>
 </div>
 
 <script>  
 
+var myChart;
 
-loadData = function () {
+createNetChart = function () {
                 $.ajax({
-                url: '/Home/GetICPServerData',
+                url: '/Home/GetICPNetChartData',
                 type: 'POST',        
                 dataType: 'json',
                 contentType: 'application/json',
@@ -33,27 +34,32 @@ loadData = function () {
 
                     @* createChart(icpdata, "dv", "dendogram", "vertical"); *@
                     
-                    createChart(icpdata, "f", "forceDirectedGraph", "vertical");
+                    createChart(icpdata, "forceDirectedGraph", "forceDirectedGraph", "vertical");
                     
  
                 }
             });
         };
 
-loadData();
+createNetChart();
+
+ let originalpointcolor = ["#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03","#13fb03", "#13fb03", "#13fb03", "#13fb03", "#13fb03"];
+ 
+let copiedpointcolor = JSON.parse(JSON.stringify(originalpointcolor));
 
 function createChart(nodes, id, type, orientation) {
-  new Chart(document.getElementById(id).getContext("2d"), {
+  myChart=new Chart(document.getElementById(id).getContext("2d"), {
     type,
     data: {
       labels: nodes.map((d) => d.name),
       datasets: [
         {
           @* pointBackgroundColor: "steelblue", *@
-          pointBackgroundColor: "#597D35",  
-          //pointRadius: 10,
-          pointHoverRadius: 10,
-          data: nodes.map((d) => Object.assign({}, d))
+         // pointBackgroundColor: "#13fb03",            
+          pointRadius: 10,
+          //pointHoverRadius: 10,
+          data: nodes.map((d) => Object.assign({}, d)),
+          pointBackgroundColor: copiedpointcolor
         }
       ]
     },
@@ -98,10 +104,10 @@ function createChart(nodes, id, type, orientation) {
         let datasets = this.config.data.datasets;
         let sum=new Array();
         datasets.forEach(function (dataset, i) {
-            ctx.font = "bold 18px Helvetica";
+            ctx.font = "Bold 16px Helvetica";
             switch ( chart.getDatasetMeta(i).type ) {
               case "forceDirectedGraph":
-                    ctx.fillStyle = "#9c9c9c";                    
+                    ctx.fillStyle = "steelblue";                    
                     chart.getDatasetMeta(i).data.forEach(function (p, j) {
                         ctx.fillText(datasets[i].data[j].name, p.x, p.y);
                     });
@@ -139,13 +145,43 @@ function createChart(nodes, id, type, orientation) {
 Chart.defaults.font.family='Helvetica'
 Chart.defaults.font.size=18
 
+loadData = function () {
+
+ $.ajax({
+        url: '/Home/GetICPServerData',
+        type: 'POST',        
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {     
+            // loop through the All data and fill the dropdown
+            $.each(data, function (index, item) {
+
+              if(item.isHelloTested==false){
+                myChart.config.data.datasets[0]['pointBackgroundColor'][index] = 'Red'; 
+              }
+              else{
+                 myChart.config.data.datasets[0]['pointBackgroundColor'][index] = originalpointcolor[index];                
+              }              
+
+
+             // if(item.serverHeartbeat==false){
+             //   myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#CC7722";                
+             // }
+             // else{
+             //   myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+             // }
+
+            });  
+            myChart.update();
+                     
+        }
+    });
+};
+
+//loadData()
+
+setInterval(function() {
+    loadData()  
+}, 5000);
+
  </script>
-@* 
- fetch(data)
-  .then((r) => r.json())
-  .then((nodes) => {
-    createChart(nodes, "dh", "dendogram", "horizontal");
-    createChart(nodes, "dv", "dendogram", "vertical");
-    createChart(nodes, "f", "forceDirectedGraph", "vertical");
-  });
-      *@

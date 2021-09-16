@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\IDTPDashboards.csproj",
+  "FilePath": "c:\\IDTPDashboard\\IDTPDashboards.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,48 +15619,48 @@
   "RootNamespace": "IDTPDashboards",
   "Documents": [
     {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\IDTPDashboard\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\IDTPDashboard\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\IDTPDashboard\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\MonitorRoutes.cshtml",
+      "FilePath": "c:\\IDTPDashboard\\Views\\Home\\MonitorRoutes.cshtml",
       "TargetPath": "Views\\Home\\MonitorRoutes.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\Home\\ServerMonitor.cshtml",
+      "FilePath": "c:\\IDTPDashboard\\Views\\Home\\ICPNetworkMonitor.cshtml",
+      "TargetPath": "Views\\Home\\ICPNetworkMonitor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\IDTPDashboard\\Views\\Home\\ServerMonitor.cshtml",
       "TargetPath": "Views\\Home\\ServerMonitor.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\IDTPDashboardProject\\IDTPDashboards\\Views\\_ViewImports.cshtml",
+      "FilePath": "c:\\IDTPDashboard\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\IDTPDashboard\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\IDTPDashboard\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     }
   ],

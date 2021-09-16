@@ -81,7 +81,6 @@ namespace IDTPDashboards.Services
                 var url=new Uri(ipadress+'/'+Constants.APIEndPoints.TESTHELLO);
                 var response = HttpClientHelper.Get(url);
 
-
                 return true;
             }
             catch(Exception ex){
@@ -109,14 +108,45 @@ namespace IDTPDashboards.Services
 
         } 
 
-        public dynamic GetICPMachineCounters(){
+        public dynamic GetICPNetChartData(){
            
             var jsonData = File.ReadAllText("tree.json");
             // IList<ICPServerIP> iCPServerIPs = JsonConvert.DeserializeObject<IList<ICPServerIP>>(jsonData);
             //return JsonConvert.SerializeObject(jsonData);
             return jsonData;
         }
-        
+
+        public IEnumerable<ICPServerHealthDetails> GetICPMachineCounters()
+        {                        
+            var rng = new Random();
+            List<ICPServerHealthDetails> servers = new();
+            int k=0;
+          
+            var icpData = GetICPNetChartData();
+           // ICPNetChartData chartData  = JsonConvert.DeserializeObject(icpData);
+           // IList<ICPNetChartData> chartData = JsonConvert.DeserializeObject<IList<ICPNetChartData>>(json);
+            var chartData = JsonConvert.DeserializeObject<IList<ICPNetChartData>>(icpData);
+
+            for(int j=0;j<chartData.Count;j++)
+            {
+                servers.Add( new ICPServerHealthDetails
+                {
+                    Date = DateTime.Now,
+                    TemperatureC = 0,                    
+                    IsHelloTested = TestHello(chartData[j].ipport),                      
+                    BankName = chartData[j].name                                            
+                });
+            k++;
+            }
+       
+
+            // //For Demo
+            //   int index = rng.Next(servers.Count);           
+            //   servers.ToArray()[index].ServerHeartbeat=false;
+            
+            return servers;
+           
+        }        
 
     }
 }
