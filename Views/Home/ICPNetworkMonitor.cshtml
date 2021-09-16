@@ -46,8 +46,8 @@ function createChart(nodes, id, type, orientation) {
       labels: nodes.map((d) => d.name),
       datasets: [
         {          
-          pointRadius: 15,
-          pointHoverRadius: 15,
+          pointRadius: 20,
+          pointHoverRadius: 30,
           data: nodes.map((d) => Object.assign({}, d)),
           pointBackgroundColor: copiedpointcolor
         }
@@ -71,7 +71,7 @@ function createChart(nodes, id, type, orientation) {
         tooltip:false,
         title: {
           display: true,
-          text: 'ICP Network with IDTP Server'                                 
+          text: ['ICP Network with IDTP Server',''],                                 
         },
         legend: {
           display: false

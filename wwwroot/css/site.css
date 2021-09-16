@@ -58,17 +58,16 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
 /* body {
+  margin-bottom: 60px;
+} */
+ /* body {
   width: 100vw;
   height: 100vh;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
-} */
+}  */
 
 .footer {
   position: absolute;
