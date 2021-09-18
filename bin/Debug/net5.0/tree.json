@@ -14,6 +14,7 @@
   { "name": "CIBL", "parent": 0, "ipport": "http://59.152.61.37:11099/icpapi" },
   { "name": "CashBaba", "parent": 0, "ipport": "http://59.152.61.37:11099/icpapi" },
   { "name": "SureCash", "parent": 0, "ipport": "http://59.152.61.37:11099/icpapi" },
+  { "name": "IBBL", "parent": 0, "ipport": "http://59.152.61.37:11099/icpapi" },
   { "name": "EXBK", "parent": 0, "ipport": "10.240.70.66:9001" },
   { "name": "DHBL", "parent": 0, "ipport": "10.240.70.66:9001" },
   { "name": "FSEB", "parent": 0, "ipport": "10.240.70.66:9001" },
