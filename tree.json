@@ -58,6 +58,9 @@
   { "name": "TTBL", "parent": 0, "ipport": "10.240.70.66:9001" },
   { "name": "UBLD", "parent": 0, "ipport": "10.240.70.66:9001" },
   { "name": "UTBL", "parent": 0, "ipport": "10.240.70.66:9001" },
-  { "name": "HVBK", "parent": 0, "ipport": "10.240.70.66:9001" }
+  { "name": "HVBK", "parent": 0, "ipport": "10.240.70.66:9001" },
+
+  { "name": "ROCKET", "parent": 0, "ipport": "10.240.70.66:9001" },
+  { "name": "NAGAD", "parent": 0, "ipport": "10.240.70.66:9001" }
 
 ]

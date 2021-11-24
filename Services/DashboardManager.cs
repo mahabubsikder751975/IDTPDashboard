@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 using IDTPDashboards.Models;
 using IDTPDashboards.Helper;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
+
 
 namespace IDTPDashboards.Services
 {
 
     public class DashboardManager
     {
+        private readonly string _connectionString;
+        public DashboardManager(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("AzureDbConnection");
+        }   
          private static readonly string[] IDTPServers = new[]
         {
             "Database Server", "API Server 1", "API Server 2", "API Server 3", "Portal Server", "LB Server"
@@ -146,7 +154,79 @@ namespace IDTPDashboards.Services
             
             return servers;
            
-        }        
+        }   
+
+        public IEnumerable<PerformanceData> GetServerPerfData()
+        {                        
+            var rng = new Random();
+            List<PerformanceData> servers = new();
+            int k=0;
+          
+            var icpData = GetServerPerfJSONDataStream();
+           // ICPNetChartData chartData  = JsonConvert.DeserializeObject(icpData);
+           // IList<ICPNetChartData> chartData = JsonConvert.DeserializeObject<IList<ICPNetChartData>>(json);
+            var perfData = JsonConvert.DeserializeObject<IList<PerformanceData>>(icpData);
+
+            return perfData;           
+        } 
+
+         public dynamic GetServerPerfJSONDataStream(){
+           
+            var jsonData = File.ReadAllText("serverPerfDataGenerator.json");
+            // IList<ICPServerIP> iCPServerIPs = JsonConvert.DeserializeObject<IList<ICPServerIP>>(jsonData);
+            //return JsonConvert.SerializeObject(jsonData);
+            return jsonData;
+        }
+
+        public List<PerformanceData> GetServerPerfDataFromDB(int PageNo)
+        {
+            using (SqlConnection sql = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("IDTP_Dashboard_GetMachinePerfData", sql))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@MachineID", "192.168.0.100"));
+                    cmd.Parameters.Add(new SqlParameter("@TDate", DateTime.Now));
+                    cmd.Parameters.Add(new SqlParameter("@pageNumber", PageNo));
+
+                    var performanceDatas = new List<PerformanceData>();
+                   
+
+                    sql.Open();
+
+                    try
+                    {
+                        using (var reader =  cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                performanceDatas.Add(PerformanceDataMapToValue(reader));
+                            }                           
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw;
+                    }
+
+                    return performanceDatas;
+                }
+            }
+        }
+
+        private PerformanceData PerformanceDataMapToValue(SqlDataReader reader)
+        {
+            return new PerformanceData()
+            {
+                xA=float.Parse(reader["CPU_Used_Percent"].ToString()),
+                yA=float.Parse(reader["Memory_Used_Percent"].ToString()),
+                zA=float.Parse(reader["Disk_Used_Percent"].ToString()), 
+                yaw=float.Parse(reader["Network_Used_Percent"].ToString())
+            };
+        }
+
 
     }
 }

@@ -36,7 +36,11 @@ namespace IDTPDashboards.Controllers
         {            
             return View();
         }
-        
+         public IActionResult MonitorServerPerformance()
+        {            
+            return View();
+        }
+
         public IActionResult ICPNetworkMonitor()
         { 
             // var icpJsonData = GetICPServerData();                    
@@ -47,23 +51,33 @@ namespace IDTPDashboards.Controllers
         }
 
         public dynamic GetServerData(){
-            DashboardManager dashboardManager = new();
+            DashboardManager dashboardManager = new(_configuration);
             var data = dashboardManager.GetMachineCounters(_idtpsvrs);
 
             return data;
         }
 
          public dynamic GetICPNetChartData(){
-            DashboardManager dashboardManager = new();           
+            DashboardManager dashboardManager = new(_configuration);           
             var returnData = dashboardManager.GetICPNetChartData();       
 
             return returnData;            
         }
 
         public dynamic GetICPServerData(){
-            DashboardManager dashboardManager = new();
+            DashboardManager dashboardManager = new(_configuration);
             var data = dashboardManager.GetICPMachineCounters();
 
+            return data;
+        }
+
+        [HttpGet]
+        public dynamic GetServerPerfData(string pageno){
+            DashboardManager dashboardManager = new(_configuration);
+            List<PerformanceData> data =null;
+            if (!string.IsNullOrWhiteSpace(pageno)){
+             data = dashboardManager.GetServerPerfDataFromDB(Int32.Parse(pageno));
+            }    
             return data;
         }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\IDTPDashboard\\IDTPDashboards.csproj": {}
+    "E:\\IDTPDashboard\\IDTPDashboards.csproj": {}
   },
   "projects": {
-    "C:\\IDTPDashboard\\IDTPDashboards.csproj": {
+    "E:\\IDTPDashboard\\IDTPDashboards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\IDTPDashboard\\IDTPDashboards.csproj",
+        "projectUniqueName": "E:\\IDTPDashboard\\IDTPDashboards.csproj",
         "projectName": "IDTPDashboards",
-        "projectPath": "C:\\IDTPDashboard\\IDTPDashboards.csproj",
+        "projectPath": "E:\\IDTPDashboard\\IDTPDashboards.csproj",
         "packagesPath": "C:\\Users\\mahab\\.nuget\\packages\\",
-        "outputPath": "C:\\IDTPDashboard\\obj\\",
+        "outputPath": "E:\\IDTPDashboard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mahab\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -41,6 +41,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [
@@ -61,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
