@@ -1,7 +1,8 @@
  <style>
   .container{
     display:flex;
-
+    vertical-align: middle;
+    text-align: center;
   }
 
   .label{
@@ -40,25 +41,46 @@
   <div id="labelAccel" class="label">
     <h2>Real Time Performance</h2> 
   </div>
-
-  <div id="perfContainer" class="container">       
+  <div id="idcontents">
+      <h6 id="machineid"></h6> 
+      <div id="perfContainer" class="container">                                              
+          <div id="divcpu" class="x">
+            <h4> CPU </h4>
+            <canvas id="divcpuChart"></canvas>
+          </div>
+          <div id="divmemory" class="y">
+            <h4> Memory </h4>
+            <canvas id="divmemoryChart"></canvas>
+          </div>
+          <div id="divdisk" class="z">
+            <h4> Disk </h4>
+            <canvas id="divdiskChart"></canvas>
+          </div>
+          <div id="divnetwork" class="z">
+            <h4> Network </h4>
+            <canvas id="divnetworkChart"></canvas>
+          </div>
+        </div>
+  </div>
+  @* <div id="perfContainer" class="container">
+    <h1 id="machineid">@ip@</h1>       
     <div id="divcpu" class="x">
       <h4> CPU </h4>
       <canvas id="divcpuChart"></canvas>
-    </div><!--divcpu-->
+    </div>
     <div id="divmemory" class="y">
       <h4> Memory </h4>
       <canvas id="divmemoryChart"></canvas>
-    </div><!--divmemory-->
+    </div>
     <div id="divdisk" class="z">
       <h4> Disk </h4>
       <canvas id="divdiskChart"></canvas>
-    </div><!--divdisk-->
+    </div>
      <div id="divnetwork" class="z">
       <h4> Network </h4>
       <canvas id="divnetworkChart"></canvas>
-    </div><!--divdisk-->
-  </div><!--perfContainer-->
+    </div>
+  </div> *@
   
 
   
@@ -190,15 +212,15 @@
       if(data){
         const d = new Date();
         let time = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-
+        $('#machineid').html("Server: "+data['machinename'])
         divcpuChartInstance.config.data.labels.push(time);
-        divcpuChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['xA'])});
+        divcpuChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['cpu'])});
         divmemoryChartInstance.config.data.labels.push(time);
-        divmemoryChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['yA'])});
+        divmemoryChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['memory'])});
         divdiskChartInstance.config.data.labels.push(time);
-        divdiskChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['zA'])});
+        divdiskChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['disk'])});
         divnetworkChartInstance.config.data.labels.push(time);
-        divnetworkChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['yaw'])});
+        divnetworkChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['network'])});
         
 
         divcpuChartInstance.update();

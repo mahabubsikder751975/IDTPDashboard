@@ -185,9 +185,9 @@ namespace IDTPDashboards.Services
                 using (SqlCommand cmd = new SqlCommand("IDTP_Dashboard_GetMachinePerfData", sql))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@MachineID", "192.168.0.100"));
+                    //cmd.Parameters.Add(new SqlParameter("@MachineID", "192.168.0.100"));
                     cmd.Parameters.Add(new SqlParameter("@TDate", DateTime.Now));
-                    cmd.Parameters.Add(new SqlParameter("@pageNumber", PageNo));
+                    //cmd.Parameters.Add(new SqlParameter("@pageNumber", PageNo));
 
                     var performanceDatas = new List<PerformanceData>();
                    
@@ -220,10 +220,12 @@ namespace IDTPDashboards.Services
         {
             return new PerformanceData()
             {
-                xA=float.Parse(reader["CPU_Used_Percent"].ToString()),
-                yA=float.Parse(reader["Memory_Used_Percent"].ToString()),
-                zA=float.Parse(reader["Disk_Used_Percent"].ToString()), 
-                yaw=float.Parse(reader["Network_Used_Percent"].ToString())
+                cpu=float.Parse(reader["CPU_Used_Percent"].ToString()),
+                memory=float.Parse(reader["Memory_Used_Percent"].ToString()),
+                disk=float.Parse(reader["Disk_Used_Percent"].ToString()), 
+                network=float.Parse(reader["Network_Used_Percent"].ToString()),
+                machinename=reader["MachineName"].ToString(),
+                tdate= DateTime.Parse(reader["TransactionDate"].ToString())
             };
         }
 

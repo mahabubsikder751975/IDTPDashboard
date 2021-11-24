@@ -4,14 +4,14 @@ namespace IDTPDashboards.Models
 {
     public class PerformanceData
     {
-        public float xA { get; set; }
+        public float cpu { get; set; }
 
-        public float yA { get; set; }
-        public float zA { get; set; }
+        public float memory { get; set; }
+        public float disk { get; set; }
 
-        public float roll { get; set; }
-        public float pitch { get; set; }
+        public float network { get; set; }
+        public string machinename { get; set; }
 
-        public float yaw { get; set; }        
+        public DateTime tdate { get; set; }        
     }
 }
