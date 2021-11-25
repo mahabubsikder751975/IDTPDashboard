@@ -212,7 +212,7 @@
       if(data){
         const d = new Date();
         let time = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-        $('#machineid').html("Server: "+data['machinename'])
+        $('#machineid').html("Server:"+data['machinename'])
         divcpuChartInstance.config.data.labels.push(time);
         divcpuChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['cpu'])});
         divmemoryChartInstance.config.data.labels.push(time);

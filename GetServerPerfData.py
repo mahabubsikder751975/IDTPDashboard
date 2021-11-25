@@ -1,3 +1,9 @@
+# python -m pip --version
+# python -m ensurepip --default-pip
+# python.exe -m pip install --upgrade pip
+# python -m pip install wheel
+# python -m pip install psutil
+# python -m pip install pyodbc 
 #!/usr/bin/python  
 try:
    import time
@@ -233,7 +239,8 @@ if __name__ == '__main__':
         tot_after = psutil.net_io_counters()
         pnic_after = psutil.net_io_counters(pernic=True)
         
-        network_total=convert_to_gbit(tot_after.bytes_sent+tot_after.bytes_recv)
+        network_total=convert_to_gbit(((tot_after.bytes_recv+tot_after.bytes_sent) + 
+        (tot_before.bytes_recv+tot_before.bytes_sent)))
         # print ("Total Network Bandwidth: %15s" % network_total)        
         # print ("Total Network Bandwidth Usage: %15s" % network_usage)
         # start output:
@@ -241,12 +248,12 @@ if __name__ == '__main__':
         # print ("   sent: %-10s" % (bytes2human(tot_after.bytes_sent)));
         # print ("   recv: %-10s" % (bytes2human(tot_after.bytes_recv)));
         
-        network_usage= '%.6f' % ((tot_after.bytes_recv - 
-        tot_before.bytes_recv)/1024/1024/1024)
+        network_usage= '%.6f' % (((tot_after.bytes_recv+tot_after.bytes_sent) - 
+        (tot_before.bytes_recv+tot_before.bytes_sent))/1024/1024/1024)
 
 
-        network_usage_percent =  ((tot_after.bytes_recv - 
-        tot_before.bytes_recv)/(tot_after.bytes_sent+tot_after.bytes_recv)*100)
+        network_usage_percent =  (((tot_after.bytes_recv+tot_after.bytes_sent) - 
+        (tot_before.bytes_recv+tot_before.bytes_sent))/(tot_after.bytes_sent+tot_after.bytes_recv))*100
 
         #print(network_usage_percent)
         #print ("Total Network Bandwidth Percent: %.10f" % (network_usage_percent/1024/1024/1024))           
