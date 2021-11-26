@@ -1,6 +1,5 @@
  <style>
-  .container{
-    display:flex;
+  .container{    
     vertical-align: middle;
     text-align: center;
   }
@@ -14,21 +13,18 @@
   .x{
     flex:3;
     text-align: center;
-    background-color: rgba(235, 113, 101, 0.73);
     margin: 10px;
   }
 
   .y{
     flex:3;
     text-align: center;
-    background-color: rgba(70, 163, 71, 0.64);
     margin-top: 10px;
     margin-bottom:10px;
 }
   .z{
     flex:3;
     text-align: center;
-    background-color:rgba(70, 140, 215, 0.74) ;
     margin:10px;
   }
 
@@ -62,32 +58,15 @@
           </div>
         </div>
   </div>
-  @* <div id="perfContainer" class="container">
-    <h1 id="machineid">@ip@</h1>       
-    <div id="divcpu" class="x">
-      <h4> CPU </h4>
-      <canvas id="divcpuChart"></canvas>
-    </div>
-    <div id="divmemory" class="y">
-      <h4> Memory </h4>
-      <canvas id="divmemoryChart"></canvas>
-    </div>
-    <div id="divdisk" class="z">
-      <h4> Disk </h4>
-      <canvas id="divdiskChart"></canvas>
-    </div>
-     <div id="divnetwork" class="z">
-      <h4> Network </h4>
-      <canvas id="divnetworkChart"></canvas>
-    </div>
-  </div> *@
-  
-
   
 
 <script>
-  window.onload = function() {
+
+ window.onload = function() {
+
+
     console.log("LOADED");
+
 
     //Configuration variables
     var updateInterval = 1000 //in ms
@@ -137,7 +116,8 @@
               data: 0,
               fill: false,
               borderColor: '#343e9a',
-              borderWidth: 1
+              borderWidth: 1,
+              backgroundColor: "#01B8AA",
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -157,7 +137,8 @@
               data: 0,
               fill: false,
               borderColor: '#343e9a',
-              borderWidth: 1
+              borderWidth: 1,
+              backgroundColor: "#01B8AA",
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -176,7 +157,8 @@
               data: 0,
               fill: false,
               borderColor: '#343e9a',
-              borderWidth: 1
+              borderWidth: 1,
+              backgroundColor: "#01B8AA",
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -196,7 +178,8 @@
               data: 0,
               fill: false,
               borderColor: '#343e9a',
-              borderWidth: 1
+              borderWidth: 1,
+              backgroundColor: "#01B8AA",
           }]
         },
         options: Object.assign({}, commonOptions, {
@@ -241,14 +224,12 @@
         else updateCount++;       
       }
     };
-    var i=0;
     function updateData() {
-      console.log("Update Data");
-      i=i+1;
+      console.log("Update Data");      
        $.ajax({
-                url: '/Home/GetServerPerfData?pageno='+i,
+                url: '/Home/GetServerPerfData',
                 type: 'GET', 
-                data:  '{pageno:"'+i+'"}',   
+                data:  '{}',   
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (icpdata) { 
@@ -264,4 +245,5 @@
 
     updateData();
   }
+
 </script>

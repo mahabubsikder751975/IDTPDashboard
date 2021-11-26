@@ -178,7 +178,7 @@ namespace IDTPDashboards.Services
             return jsonData;
         }
 
-        public List<PerformanceData> GetServerPerfDataFromDB(int PageNo)
+        public List<PerformanceData> GetServerPerfDataFromDB()
         {
             using (SqlConnection sql = new SqlConnection(_connectionString))
             {

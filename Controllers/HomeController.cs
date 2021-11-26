@@ -72,12 +72,12 @@ namespace IDTPDashboards.Controllers
         }
 
         [HttpGet]
-        public dynamic GetServerPerfData(string pageno){
+        public dynamic GetServerPerfData(){
             DashboardManager dashboardManager = new(_configuration);
             List<PerformanceData> data =null;
-            if (!string.IsNullOrWhiteSpace(pageno)){
-             data = dashboardManager.GetServerPerfDataFromDB(Int32.Parse(pageno));
-            }    
+            
+            data = dashboardManager.GetServerPerfDataFromDB();
+              
             return data;
         }
 

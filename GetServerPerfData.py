@@ -97,7 +97,7 @@ def savetodatabase():
         #cursor.execute
         cursor.execute('''
         INSERT INTO MachinePerfData ([TransactionDate],[MachineName],[MachineIP],
-        [CPU_Total],[CPU_Used],[CPU_Used_Percent],
+        [CPU_Total],[CPU_Used_Percent],
         [Memory_Total],[Memory_Used],[Memory_Used_Percent],
         [Disk_Total],[Disk_Used],[Disk_Used_Percent],
         [Network_Total],[Network_Used],[Network_Used_Percent])
@@ -107,7 +107,6 @@ def savetodatabase():
         '''+"'"+host_name+"'"+''',
         '''+"'"+host_ip+"'"+''',
         '''+str(cpu_total_logical)+''',
-        '''+str(cpu_usage)+''',
         '''+str(cpu_usage_percent)+''',
         '''+str(memory_total)+''',
         '''+str(memory_usage)+''',
