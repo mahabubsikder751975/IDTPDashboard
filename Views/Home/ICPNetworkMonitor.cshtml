@@ -27,7 +27,9 @@ createNetChart = function () {
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (icpdata) {     
-                    originalpointcolor = new Array(icpdata.length).fill("#66ff00");
+                    originalpointcolor = new Array(icpdata.length).fill("#f2f1ed");
+                    //#f2f1ed
+                    //#66ff00
                     copiedpointcolor = JSON.parse(JSON.stringify(originalpointcolor));
                     createChart(icpdata, "forceDirectedGraph", "forceDirectedGraph", "vertical");
                 }
@@ -151,10 +153,10 @@ loadData = function () {
             $.each(data, function (index, item) {
 
               if(item.isHelloTested==false){
-                myChart.config.data.datasets[0]['pointBackgroundColor'][index] = '#f2f1ed'; 
+                myChart.config.data.datasets[0]['pointBackgroundColor'][index] = originalpointcolor[index]; 
               }
               else{
-                 myChart.config.data.datasets[0]['pointBackgroundColor'][index] = originalpointcolor[index];                
+                 myChart.config.data.datasets[0]['pointBackgroundColor'][index] = "#66ff00"                 
               }              
 
 

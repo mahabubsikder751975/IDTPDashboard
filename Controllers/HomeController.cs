@@ -71,12 +71,23 @@ namespace IDTPDashboards.Controllers
             return data;
         }
 
-        [HttpGet]
-        public dynamic GetServerPerfData(){
+        [HttpPost]
+        public List<PerformanceData> GetServerPerfData(string machinename){
             DashboardManager dashboardManager = new(_configuration);
             List<PerformanceData> data =null;
             
-            data = dashboardManager.GetServerPerfDataFromDB();
+            data = dashboardManager.GetServerPerfDataFromDB(machinename);
+              
+            return data;
+        }
+
+         [HttpPost]
+        public List<ServerName> GetMachinesName(){
+           
+            DashboardManager dashboardManager = new(_configuration);
+            List<ServerName> data =null;
+
+            data = dashboardManager.GetMachinesNameFromDB();
               
             return data;
         }

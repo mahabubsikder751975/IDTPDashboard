@@ -178,14 +178,14 @@ namespace IDTPDashboards.Services
             return jsonData;
         }
 
-        public List<PerformanceData> GetServerPerfDataFromDB()
+        public List<PerformanceData> GetServerPerfDataFromDB(string machinename)
         {
             using (SqlConnection sql = new SqlConnection(_connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("IDTP_Dashboard_GetMachinePerfData", sql))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.Parameters.Add(new SqlParameter("@MachineID", "192.168.0.100"));
+                    cmd.Parameters.Add(new SqlParameter("@MachineName", machinename));
                     cmd.Parameters.Add(new SqlParameter("@TDate", DateTime.Now));
                     //cmd.Parameters.Add(new SqlParameter("@pageNumber", PageNo));
 
@@ -216,6 +216,41 @@ namespace IDTPDashboards.Services
             }
         }
 
+        public List<ServerName> GetMachinesNameFromDB()
+        {
+            using (SqlConnection sql = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("IDTP_Dashboard_GetMachinesName", sql))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;                    
+
+                    List<ServerName> machinenames = new List<ServerName>();
+                   
+
+                    sql.Open();
+
+                    try
+                    {
+                        using (var reader =  cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                               machinenames.Add(ServerNameMapToValue(reader));
+                            }                           
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw;
+                    }
+
+                    return machinenames;
+                }
+            }
+        }
+
         private PerformanceData PerformanceDataMapToValue(SqlDataReader reader)
         {
             return new PerformanceData()
@@ -228,7 +263,14 @@ namespace IDTPDashboards.Services
                 tdate= DateTime.Parse(reader["TransactionDate"].ToString())
             };
         }
-
+        private ServerName ServerNameMapToValue(SqlDataReader reader)
+        {
+            return new ServerName()
+            {
+                Id=Int32.Parse(reader["Id"].ToString()),
+                MachineName=reader["MachineName"].ToString()
+            };
+        }
 
     }
 }

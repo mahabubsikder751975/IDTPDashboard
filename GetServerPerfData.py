@@ -1,9 +1,19 @@
-# python -m pip --version
-# python -m ensurepip --default-pip
-# python.exe -m pip install --upgrade pip
-# python -m pip install wheel
-# python -m pip install psutil
-# python -m pip install pyodbc 
+# Supported Version 3.X
+# sudo apt install python3-pip
+# python3 -m pip --version
+# python3 -m ensurepip --default-pip
+# python3.exe -m pip install --upgrade pip
+# python3 -m pip install wheel
+# python3 -m pip install psutil
+# sudo apt install unixodbc-dev
+# python3 -m pip install pyodbc 
+# Debian 10
+# sudo su
+# curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
+# exit
+# sudo apt-get update
+# sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
 #!/usr/bin/python  
 try:
    import time
@@ -87,10 +97,13 @@ def savetodatabase():
         # to inserting data into sql server database table
     try:
         #print("Connecting db server")
+        #Driver={SQL Server};
+        #Driver={/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.8.so.1.1};
         conn = pyodbc.connect('Driver={SQL Server};'
-                      'Server=18.142.121.40;'
-                      'Database=IDTPReportDB;'
-                      'UID=sa; PWD=Techvision123@;')
+                      'Server=18.142.121.40,1433;'
+                     'Database=IDTPReportDB;'                  
+                      'UID=sa; PWD=Techvision123@;', timeout=15)
+                   
         #print("opening a connection cursor")
         cursor = conn.cursor()
         #print("Executing sql")
@@ -146,6 +159,10 @@ if __name__ == '__main__':
     while True:       
         # infinite loop, as we are monetering
         # the network connection till the machine runs
+
+        #Waiting for certain times(second), this will replaced by a scheduer
+        interval = 300;
+        time.sleep(interval)
 
         #Host Name & IP
         host_name = socket.gethostname()

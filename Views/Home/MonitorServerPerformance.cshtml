@@ -10,24 +10,6 @@
     text-align: center;
   }
 
-  .x{
-    flex:3;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .y{
-    flex:3;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom:10px;
-}
-  .z{
-    flex:3;
-    text-align: center;
-    margin:10px;
-  }
-
   h1{
     text-align: center;
   }
@@ -35,24 +17,31 @@
   </style>  
 
   <div id="labelAccel" class="label">
-    <h2>Real Time Performance</h2> 
+    <h2>Real Time Performance</h2>     
   </div>
   <div id="idcontents">
-      <h6 id="machineid"></h6> 
+      Server Name: <select name="machine-names" id="machine-names"></select>
+      
+      <br/>
+      <br/>
+
       <div id="perfContainer" class="container">                                              
-          <div id="divcpu" class="x">
+          <div id="divcpu">
             <h4> CPU </h4>
             <canvas id="divcpuChart"></canvas>
           </div>
-          <div id="divmemory" class="y">
+           <br/>
+          <div id="divmemory">
             <h4> Memory </h4>
             <canvas id="divmemoryChart"></canvas>
           </div>
-          <div id="divdisk" class="z">
+           <br/>
+          <div id="divdisk">
             <h4> Disk </h4>
             <canvas id="divdiskChart"></canvas>
           </div>
-          <div id="divnetwork" class="z">
+           <br/>
+          <div id="divnetwork">
             <h4> Network </h4>
             <canvas id="divnetworkChart"></canvas>
           </div>
@@ -69,8 +58,8 @@
 
 
     //Configuration variables
-    var updateInterval = 1000 //in ms
-    var numberElements = 30;
+    var updateInterval = 60000 //in ms
+    var numberElements = 200;
 
     //Globals
     var updateCount = 0;
@@ -191,9 +180,28 @@
         })
       });
 
+    function removeData(){      
+      //divcpuChartInstance.data=0;
+      divcpuChartInstance.config.data.labels=[];
+
+      //divmemoryChartInstance.data=0;
+      divmemoryChartInstance.config.data.labels=[];
+
+      //divdiskChartInstance.data=0;
+      divdiskChartInstance.config.data.labels=[];
+
+     // divnetworkChartInstance.data=0;
+      divnetworkChartInstance.config.data.labels=[];
+
+      divcpuChartInstance.update();
+      divmemoryChartInstance.update();
+      divdiskChartInstance.update();
+      divnetworkChartInstance.update();
+    }
+
     function addData(data) {
       if(data){
-        const d = new Date();
+        const d = new Date(data['tdate']);
         let time = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
         $('#machineid').html("Server:"+data['machinename'])
         divcpuChartInstance.config.data.labels.push(time);
@@ -224,26 +232,59 @@
         else updateCount++;       
       }
     };
-    function updateData() {
-      console.log("Update Data");      
-       $.ajax({
-                url: '/Home/GetServerPerfData',
-                type: 'GET', 
-                data:  '{}',   
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (icpdata) { 
-                  if(icpdata!='undefined'){
-                    icpdata.forEach(obj => {
-                        addData(obj);
-                    })
-                  }               
-                }
-              });
-      setTimeout(updateData,updateInterval);
+    function updateData(macname) {
+      console.log("Update Data"); 
+      $.post('GetServerPerfData', { machinename: macname}, 
+      function(icpdata){
+          removeData();
+          if(icpdata!='undefined'){
+            if(icpdata.length>0){
+              icpdata.forEach(obj => {
+                  addData(obj);
+              })}
+              
+            }
+      });      
+//      setTimeout(updateData,updateInterval);
     }
+    
 
-    updateData();
+    function AddMachineDropDownList() {        
+            //Create a DropDownList element.
+            var ddlCustomers = document.getElementById("machine-names");
+            var customers;
+            //Build an array containing machine name records.
+             $.post('GetMachinesName', {}, 
+                function(icpdata){
+                
+                  if(icpdata!='undefined'){
+                        icpdata.forEach(obj => {
+                        var option = document.createElement("OPTION");
+                        
+                        //Set Customer Name in Text part.
+                        option.innerHTML = obj["machineName"];
+
+                        //Set CustomerId in Value part.
+                        option.value = obj["id"];
+
+                        //Add the Option element to DropDownList.
+                        ddlCustomers.options.add(option);                        
+                    })                        
+                  }    
+                  }); 
+            ddlCustomers.value=1;                              
+    }    
+
+    AddMachineDropDownList();
+
+    $("#machine-names").on("change",function () {
+                updateData($("#machine-names option:selected").text());
+      });
+
+    updateData($("#machine-names option:selected").text());    
+
   }
+  
+  
 
 </script>

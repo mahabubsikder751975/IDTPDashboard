@@ -11,14 +11,18 @@
 <script>
    
 const labels = ["Rack 1","Rack 2","Rack 3"];
+//#CC7722
+//LB #4F7942
+//DB #234F1E
+//API #597D35
+//Porta #597D35
+
 let origindatasets = [
     {
       label: 'Database',
       data:  [45,45,45],
       backgroundColor: [
-                '#234F1E',
-                '#234F1E',
-                '#234F1E'
+                '#CC7722'
             ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -29,9 +33,7 @@ let origindatasets = [
       label: 'API Server 3',
       data:  [45,45,45],
       backgroundColor: [
-                '#597D35',
-                '#597D35',
-                '#597D35'
+                '#CC7722'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -42,9 +44,7 @@ let origindatasets = [
       label: 'API Server 2',
       data: [45,45,45],
       backgroundColor: [
-                '#597D35',
-                '#597D35',
-                '#597D35'
+                '#CC7722'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -55,9 +55,7 @@ let origindatasets = [
       label: 'API Server 1',
       data: [45,45,45],
       backgroundColor: [
-               '#597D35',
-                '#597D35',
-                '#597D35'
+               '#CC7722'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -69,9 +67,7 @@ let origindatasets = [
       label: 'Portal Server',
       data: [45,45,45],
       backgroundColor: [
-                '#597D35',
-                '#597D35',
-                '#597D35'
+                '#CC7722'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -82,9 +78,7 @@ let origindatasets = [
       label: 'LB Server',
       data: [45,45,45],
       backgroundColor: [
-                '#4F7942',
-                '#4F7942',
-                '#4F7942'
+                '#CC7722'
                 ],
       stack: 'Stack 0',
       borderWidth: 2,
@@ -193,25 +187,25 @@ loadData = function () {
             $.each(data, function (index, item) {
 
               if(item.isHelloTested==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#CC7722";   
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
               }
               else{
-                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";                
               }
 
               if(item.isInsertTested==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#CC7722";   
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
               }
               else{
-                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";              
               }
 
 
               if(item.serverHeartbeat==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#CC7722";                
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];               
               }
               else{
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";               
               }
 
             });  
