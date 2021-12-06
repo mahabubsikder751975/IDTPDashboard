@@ -177,14 +177,9 @@ var myChart = new Chart(ctx,config);
 
 loadData = function () {
 
- $.ajax({
-        url: '/Home/GetServerData',
-        type: 'POST',        
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {     
-            // loop through the All data and fill the dropdown
-            $.each(data, function (index, item) {
+ $.post('GetServerData', {}, 
+        function(data){
+          $.each(data, function (index, item) {
 
               if(item.isHelloTested==false){
                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
@@ -192,6 +187,7 @@ loadData = function () {
               else{
                  myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";                
               }
+
 
               if(item.isInsertTested==false){
                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
@@ -209,16 +205,17 @@ loadData = function () {
               }
 
             });  
-            myChart.update();
-                     
-        }
-    });
+
+        myChart.update();
+                  
+        }); 
+    
 };
 
-@* loadData() *@
+loadData()
 
-setInterval(function() {
-     loadData()  
-}, 5000);
+//setInterval(function() {
+//     loadData()  
+//}, 5000);
 
 </script>

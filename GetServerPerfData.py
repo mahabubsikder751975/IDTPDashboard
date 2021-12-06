@@ -6,13 +6,33 @@
 # python3 -m pip install wheel
 # python3 -m pip install psutil
 # sudo apt install unixodbc-dev
+# sudo apt install unixODBC unixODBC-devel
 # python3 -m pip install pyodbc 
 # Debian 10
 # sudo su
+# apt-get install curl
 # curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
 # exit
 # sudo apt-get update
 # sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
+# RHEL 
+# sudo yum install unixodbc-dev
+# sudo yum install unixODBC unixODBC-devel
+# sudo yum install epel-release
+# sudo yum install gcc-c++
+# pip3 --version
+# sudo yum install python3-devel
+# sudo pip3 install pyodbc
+
+# Red Hat Enterprise Server 8 and Oracle Linux 8
+# sudo su
+# Red Hat Enterprise Server 8 and Oracle Linux 8
+# curl https://packages.microsoft.com/config/rhel/8/prod.repo > /etc/yum.repos.d/mssql-release.repo
+# exit
+# sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
+# sudo ACCEPT_EULA=Y yum install -y msodbcsql17
+
 
 #!/usr/bin/python  
 try:
@@ -97,8 +117,13 @@ def savetodatabase():
         # to inserting data into sql server database table
     try:
         #print("Connecting db server")
+        #Windows
         #Driver={SQL Server};
+        #Debian
         #Driver={/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.8.so.1.1};
+        #RHEL
+        #Driver={/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.8.so.1.2};
+	    #192.168.1.61,3341
         conn = pyodbc.connect('Driver={SQL Server};'
                       'Server=18.142.121.40,1433;'
                      'Database=IDTPReportDB;'                  
@@ -156,13 +181,13 @@ def savetodatabase():
 # ===================
   
 if __name__ == '__main__':    
-    while True:       
+    #while True:       
         # infinite loop, as we are monetering
         # the network connection till the machine runs
 
         #Waiting for certain times(second), this will replaced by a scheduer
-        interval = 300;
-        time.sleep(interval)
+        #interval = 300;
+        #time.sleep(interval)
 
         #Host Name & IP
         host_name = socket.gethostname()
@@ -180,8 +205,8 @@ if __name__ == '__main__':
         cpu_total_logical=psutil.cpu_count()
         #print(" Total Logical CPU: %15s " % cpu_total_logical)
 
-        l1, l2, l3 = psutil.getloadavg()
-        cpu_usage = (l3/psutil.cpu_count()) * 100
+        #l1, l2, l3 = psutil.getloadavg()
+        #cpu_usage = (l3/psutil.cpu_count()) * 100
         
         #print(" Total CPU Usage: %15s " % cpu_usage)
 
@@ -236,10 +261,10 @@ if __name__ == '__main__':
         # print(" Total Disk Percent: %15s %s" % (disk_usage_percent,"%"))
 
         #Read disk parameters
-        diskio=psutil.disk_io_counters()
-        diskio_total_write=(diskio.write_bytes)
+        #diskio=psutil.disk_io_counters()
+        #diskio_total_write=(diskio.write_bytes)
         # print(" Total Disk Write: %15s " % diskio_total_write)
-        diskio_total_read=(diskio.read_bytes)
+        #diskio_total_read=(diskio.read_bytes)
         # print(" Total Disk Read: %15s " % diskio_total_read)      
 
         #Network Statistics
