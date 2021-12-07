@@ -260,7 +260,7 @@ namespace IDTPDashboards.Services
                 disk=float.Parse(reader["Disk_Used_Percent"].ToString()), 
                 network=float.Parse(reader["Network_Used_Percent"].ToString()),
                 machinename=reader["MachineName"].ToString(),
-                tdate= DateTime.Parse(reader["TransactionDate"].ToString())
+                mCdate= DateTime.Parse(reader["MetricCollectionDate"].ToString())
             };
         }
         private ServerName ServerNameMapToValue(SqlDataReader reader)

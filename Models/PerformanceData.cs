@@ -12,6 +12,6 @@ namespace IDTPDashboards.Models
         public float network { get; set; }
         public string machinename { get; set; }
 
-        public DateTime tdate { get; set; }        
+        public DateTime mCdate { get; set; }        
     }
 }

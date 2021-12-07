@@ -61,33 +61,30 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx,config);
 
 
-@* loadData = function () {
+loadData = function () {
 
  $.ajax({
         url: '/Home/GetServerData',
         type: 'POST',        
         dataType: 'json',
         contentType: 'application/json',
-        success: function (data) {     
-            // loop through the All data and fill the dropdown
+        success: function (data) {                 
             $.each(data, function (index, item) {
               if(item.serverHeartbeat==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                
-                //myChart.update();
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#ba0001";                                
               }
               else{
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                
-                //myChart.update();
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];                                
               }                
             });  
             myChart.update();
                      
         }
     });
-}; *@
+}; 
 
-@* setInterval(function() {  
-     loadData()
-}, 5000); *@
+//setInterval(function() {  
+//     loadData()
+//}, 5000);
 
 </script>

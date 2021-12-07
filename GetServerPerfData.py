@@ -134,7 +134,7 @@ def savetodatabase():
         #print("Executing sql")
         #cursor.execute
         cursor.execute('''
-        INSERT INTO MachinePerfData ([TransactionDate],[MachineName],[MachineIP],
+        INSERT INTO MachinePerfData ([MetricCollectionDate],[MachineName],[MachineIP],
         [CPU_Total],[CPU_Used_Percent],
         [Memory_Total],[Memory_Used],[Memory_Used_Percent],
         [Disk_Total],[Disk_Used],[Disk_Used_Percent],

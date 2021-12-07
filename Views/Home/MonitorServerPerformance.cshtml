@@ -51,8 +51,7 @@
 
 <script>
 
- window.onload = function() {
-
+$(document).ready(function() { 
 
     console.log("LOADED");
 
@@ -197,7 +196,7 @@
 
     function addData(data) {
       if(data){
-        const d = new Date(data['tdate']);
+        const d = new Date(data['mCdate']);
         let time = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
         $('#machineid').html("Server:"+data['machinename'])
         divcpuChartInstance.config.data.labels.push(time);
@@ -265,22 +264,21 @@
 
                         //Add the Option element to DropDownList.
                         ddlCustomers.options.add(option);                        
-                    })                        
-                  }    
-                  }); 
-            ddlCustomers.value=1;                              
+                    })
+                    ddlCustomers.value=1;
+                    updateData(icpdata[0].machineName);
+                  }
+                  
+
+                  });                                         
     }    
 
-    AddMachineDropDownList();
+    AddMachineDropDownList();      
 
     $("#machine-names").on("change",function () {
                 updateData($("#machine-names option:selected").text());
-      });
+      });             
 
-    updateData($("#machine-names option:selected").text());    
-
-  }
-  
-  
+});  
 
 </script>
