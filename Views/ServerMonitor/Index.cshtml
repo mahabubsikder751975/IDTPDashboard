@@ -15,7 +15,7 @@
 </style>
 <h1>IDTP Server Configuration</h1>
 <hr />
-<div class="card">
+<div class="card mb-2">
     <div class="card-body">
         <div class="p-t-15 p-5">
             <div class="row">
@@ -125,7 +125,7 @@
                                 <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
                                 <b>Time: </b><span class="server-time">@api.Time</span><br />
                             </p>
-                            <a class="btn btn-primary job_button" href="/SQLJobMonitor/Index?dbIp=@api.MachineIP&machineName=@api.HostName" target="_blank">Job Status</a>
+                            @*<a class="btn btn-primary job_button" href="/SQLJobMonitor/Index?dbIp=@api.MachineIP&machineName=@api.HostName" target="_blank">Job Status</a>*@
                         </div>
                     }
                     <br />
@@ -165,7 +165,7 @@
         </div>
     </div>
 </div>
-<a asp-action="Index" asp-controller="Home">Back to Previous Menu</a>
+@*<a asp-action="Index" asp-controller="Home">Back to Previous Menu</a>*@
 <script>
     loadData = function () {
         $.ajax({
