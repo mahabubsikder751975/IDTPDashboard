@@ -124,9 +124,11 @@ def savetodatabase():
         #RHEL
         #Driver={/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.8.so.1.2};
 	    #192.168.1.61,3341
+        #59.152.61.37,11072
+        #18.142.121.40,1433
         conn = pyodbc.connect('Driver={SQL Server};'
-                      'Server=18.142.121.40,1433;'
-                     'Database=IDTPReportDB;'                  
+                      'Server=59.152.61.37,11072;'
+                     'Database=testMirroring;'                  
                       'UID=sa; PWD=Techvision123@;', timeout=15)
                    
         #print("opening a connection cursor")
@@ -181,13 +183,13 @@ def savetodatabase():
 # ===================
   
 if __name__ == '__main__':    
-    #while True:       
+    while True:       
         # infinite loop, as we are monetering
         # the network connection till the machine runs
 
         #Waiting for certain times(second), this will replaced by a scheduer
-        #interval = 300;
-        #time.sleep(interval)
+        interval = 1;
+        time.sleep(interval)
 
         #Host Name & IP
         host_name = socket.gethostname()

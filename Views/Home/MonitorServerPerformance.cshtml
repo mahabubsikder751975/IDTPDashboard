@@ -232,6 +232,8 @@ $(document).ready(function() {
       $.post('GetServerPerfData', { machinename: macname}, 
       function(icpdata){
           removeData();
+           //Globals
+          var updateCount = 0;
           if(icpdata!='undefined'){
             if(icpdata.length>0){
               icpdata.forEach(obj => {

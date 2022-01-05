@@ -34,7 +34,7 @@ namespace IDTPDashboards.Services
 
         public IEnumerable<ServerHealthDetails> GetMachineCounters( List<ServerIP> idtpsvrs)
         {                        
-            var rng = new Random();
+            // var rng = new Random();
             List<ServerHealthDetails> servers = new();
             int k=0;
             for(int i=0;i<IDTPRacks.Count();i++)
@@ -46,8 +46,11 @@ namespace IDTPDashboards.Services
                             Date = DateTime.Now,
                             TemperatureC = 0,
                             ServerHeartbeat = IsMachinelive(idtpsvrs[k].IPAddress),
-                            IsHelloTested = TestHello(idtpsvrs[k].IPAddress),  
-                            IsInsertTested = TestDataInsert(idtpsvrs[k].IPAddress),
+                            IsHelloTested = false,  
+                            IsInsertTested = false,
+
+                            //IsHelloTested = TestHello(idtpsvrs[k].IPAddress),  
+                            //IsInsertTested = TestDataInsert(idtpsvrs[k].IPAddress),
                             ServerName = IDTPServers[j],  
                             RackName = IDTPRacks[i],
                             ServerRackId=j,  

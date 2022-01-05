@@ -246,13 +246,3 @@ E:\IDTPDashboard\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
 E:\IDTPDashboard\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
 E:\IDTPDashboard\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\IDTPDashboard\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\web.config
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.Development.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.deps.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.runtimeconfig.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\package-lock.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\serverPerfDataGenerator - Copy.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\serverPerfDataGenerator.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\tree.json
-E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\wwwroot\js\.eslintrc.json

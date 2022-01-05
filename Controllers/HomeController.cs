@@ -99,8 +99,9 @@ namespace IDTPDashboards.Controllers
         }
 
         public IActionResult MonitorRoutes()
-        {            
-            return View();
+        {
+            return Redirect("http://192.168.1.31:8070/ServerMonitor/Index");
+            //return View();
         }
     }
 }

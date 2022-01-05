@@ -179,23 +179,7 @@ loadData = function () {
 
  $.post('GetServerData', {}, 
         function(data){
-          $.each(data, function (index, item) {
-
-              if(item.isHelloTested==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
-              }
-              else{
-                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";                
-              }
-
-
-              if(item.isInsertTested==false){
-                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
-              }
-              else{
-                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";              
-              }
-
+          $.each(data, function (index, item) {            
 
               if(item.serverHeartbeat==false){
                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];               
@@ -212,10 +196,26 @@ loadData = function () {
     
 };
 
-loadData()
+//loadData()
 
-//setInterval(function() {
-//     loadData()  
-//}, 5000);
+setInterval(function() {
+     loadData()  
+}, 1000);
 
 </script>
+
+  @* if(item.isHelloTested==false){
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
+              }
+              else{
+                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";                
+              }
+
+
+              if(item.isInsertTested==false){
+                myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]=copieddatasets[item.serverRackId].backgroundColor[item.rackId];   
+              }
+              else{
+                 myChart.config.data.datasets[item.serverRackId].backgroundColor[item.rackId]="#4F7942";              
+              }
+ *@
