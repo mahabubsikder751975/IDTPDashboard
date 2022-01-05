@@ -15629,6 +15629,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\IDTPDashboard\\Views\\ServerMonitor\\Index.cshtml",
+      "TargetPath": "Views\\ServerMonitor\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\IDTPDashboard\\Views\\Home\\MonitorServerPerformance.cshtml",
       "TargetPath": "Views\\Home\\MonitorServerPerformance.cshtml",
       "FileKind": "mvc"

@@ -45,7 +45,7 @@ namespace IDTPDashboards.Services
                         {
                             Date = DateTime.Now,
                             TemperatureC = 0,
-                            ServerHeartbeat = IsMachinelive(idtpsvrs[k].IPAddress),
+                            ServerHeartbeat = string.IsNullOrWhiteSpace(idtpsvrs[k].IPAddress) ? false : IsMachinelive(idtpsvrs[k].IPAddress),
                             IsHelloTested = false,  
                             IsInsertTested = false,
 

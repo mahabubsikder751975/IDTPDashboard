@@ -98,10 +98,10 @@ namespace IDTPDashboards.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult MonitorRoutes()
-        {
-            return Redirect("http://192.168.1.31:8070/ServerMonitor/Index");
-            //return View();
-        }
+        // public IActionResult MonitorRoutes()
+        // {
+        //     return Redirect("http://192.168.1.31:8070/ServerMonitor/Index");
+        //     //return View();
+        // }
     }
 }

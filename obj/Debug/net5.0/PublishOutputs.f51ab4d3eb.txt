@@ -2008,6 +2008,8 @@ E:\IDTPDashboard\ReleaseBin\IDTPDashboards.deps.json
 E:\IDTPDashboard\ReleaseBin\IDTPDashboards.runtimeconfig.json
 E:\IDTPDashboard\ReleaseBin\IDTPDashboards.pdb
 E:\IDTPDashboard\ReleaseBin\Newtonsoft.Json.dll
+E:\IDTPDashboard\ReleaseBin\Renci.SshNet.dll
+E:\IDTPDashboard\ReleaseBin\SshNet.Security.Cryptography.dll
 E:\IDTPDashboard\ReleaseBin\System.Data.SqlClient.dll
 E:\IDTPDashboard\ReleaseBin\runtimes\win-arm64\native\sni.dll
 E:\IDTPDashboard\ReleaseBin\runtimes\win-x64\native\sni.dll
