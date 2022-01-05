@@ -1,0 +1,255 @@
+﻿@model SuperAdminPortal.Models.ServerDetailsViewModel
+@{
+    ViewData["Title"] = "Server Monitoring Tool";
+}
+<style>
+    .job_button {
+        background-color: white;
+        color: black;
+    }
+
+        .job_button:hover {
+            background-color: beige;
+            color: black;
+        }
+</style>
+<h1>IDTP Server Configuration</h1>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="p-t-15 p-5">
+            <div class="row">
+                <h5>Load Balancing Servers</h5>
+            </div>
+            <div class="row">
+                @{
+                    int i = 0;
+                    foreach (var api in Model.LBServers)
+                    {
+                        string style = api.PingResult == true ? "green" : "red";
+                        style = api.IsTimeInSync == true ? "green" : "orange";
+                        string htmlId = "LB" + i;
+                        <div id="@htmlId" style="background-color:@style;color:white;padding:25px;border-radius:10px;width:300px;margin-right:10px;margin-top:10px;">
+                            <h6>@api.MachineIP</h6>
+                            <p style="font-size:0.8rem;">
+                                <b>Machine:</b> @api.HostName
+                                <br />
+                                <b>Machine ID:</b> @api.MachineID
+                                <br />
+                                <b>CPU: </b>@api.CPUModel | <b>Core Count: </b>@api.CPUCoreCount<br />
+                                <b>Memory Total: </b>@api.MemoryTotal |<b>Memory Free: </b> @api.MemoryFree <br />
+                                <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
+                                <b>Time: </b><span class="server-time">@api.Time</span><br />
+                            </p>
+                        </div>
+                        i++;
+                    }
+                    <br />
+                }
+            </div>
+            <br />
+            <div class="row">
+                <h5>IDTP Portals</h5>
+            </div>
+            <div class="row">
+                @{
+                    foreach (var api in Model.PortalServers)
+                    {
+                        string style = api.IsTimeInSync == true ? "green" : "orange";
+                        style = api.PingResult == true ? "green" : "red";
+                        string htmlId = "PORTAL" + @api.MachineID;
+                        <div id="@htmlId" style="background-color:@style;color:white;padding:25px;border-radius:10px;width:300px;margin-right:10px;margin-top:10px;">
+                            <h6>@api.MachineIP</h6>
+                            <p style="font-size:0.8rem;">
+                                <b>Machine:</b> @api.HostName
+                                <br />
+                                <b>Machine ID:</b> @api.MachineID
+                                <br />
+                                <b>CPU: </b>@api.CPUModel | <b>Core Count: </b>@api.CPUCoreCount<br />
+                                <b>Memory Total: </b>@api.MemoryTotal |<b>Memory Free: </b> @api.MemoryFree <br />
+                                <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
+                                <b>Time: </b><span class="server-time">@api.Time</span><br />
+                            </p>
+                        </div>
+                    }
+                    <br />
+                }
+            </div>
+            <br />
+            <div class="row">
+                <h5>IDTP Servers</h5>
+            </div>
+            <div class="row">
+                @{
+                    foreach (var api in Model.APIServers)
+                    {
+                        string style = api.IsTimeInSync == true ? "green" : "orange";
+                        style = api.PingResult == true ? "green" : "red";
+                        string htmlId = "API" + @api.MachineID;
+                        <div id="@htmlId" style="background-color:@style;color:white;padding:25px;border-radius:10px;width:300px;margin-right:10px;margin-top:10px;">
+                            <h6>@api.MachineIP</h6>
+                            <p style="font-size:0.8rem;">
+                                <b>Machine:</b> @api.HostName
+                                <br />
+                                <b>Machine ID:</b> @api.MachineID
+                                <br />
+                                <b>CPU: </b>@api.CPUModel | <b>Core Count: </b>@api.CPUCoreCount<br />
+                                <b>Memory Total: </b>@api.MemoryTotal |<b>Memory Free: </b> @api.MemoryFree <br />
+                                <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
+                                <b>Time: </b><span class="server-time">@api.Time</span><br />
+                            </p>
+                        </div>
+                    }
+                    <br />
+                }
+            </div>
+            <br />
+            <div class="row">
+                <h5>Database Servers</h5>
+            </div>
+            <div class="row">
+                @{
+                    foreach (var api in Model.DBServers)
+                    {
+                        string style = api.IsTimeInSync == true ? "green" : "orange";
+                        style = api.PingResult == true ? "green" : "red";
+                        <div style="background-color:@style;color:white;padding:25px;border-radius:10px;width:300px;margin-right:10px;margin-top:10px;">
+                            <h6>@api.MachineIP</h6>
+                            <p style="font-size:0.8rem;">
+                                <b>Machine:</b> @api.HostName
+                                <br />
+                                <b>Machine ID:</b> @api.MachineID
+                                <br />
+                                <b>CPU: </b>@api.CPUModel | <b>Core Count: </b>@api.CPUCoreCount<br />
+                                <b>Memory Total: </b>@api.MemoryTotal |<b>Memory Free: </b> @api.MemoryFree <br />
+                                <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
+                                <b>Time: </b><span class="server-time">@api.Time</span><br />
+                            </p>
+                            <a class="btn btn-primary job_button" href="/SQLJobMonitor/Index?dbIp=@api.MachineIP&machineName=@api.HostName" target="_blank">Job Status</a>
+                        </div>
+                    }
+                    <br />
+                }
+            </div>
+            <br />
+            <div class="row">
+                <h5>Time Servers</h5>
+            </div>
+            <div class="row">
+                @{
+                    int j = 0;
+                    foreach (var api in Model.TimeServers)
+                    {
+                        string style = api.IsTimeInSync == true ? "green" : "orange";
+                        style = api.PingResult == true ? "green" : "red";
+                        string htmlId = "TServ" + j;
+                        <div id="@htmlId" style="background-color:@style;color:white;padding:25px;border-radius:10px;width:300px;margin-right:10px;margin-top:10px;">
+                            <h6>@api.MachineIP</h6>
+                            <p style="font-size:0.8rem;">
+                                <b>Machine:</b> @api.HostName
+                                <br />
+                                <b>Machine ID:</b> @api.MachineID
+                                <br />
+                                <b>CPU: </b>@api.CPUModel | <b>Core Count: </b>@api.CPUCoreCount<br />
+                                <b>Memory Total: </b>@api.MemoryTotal |<b>Memory Free: </b> @api.MemoryFree <br />
+                                <b>HDD Total: </b> @api.HardDiskTotal | <b>HDD Free: </b> @api.HardDiskFree <br />
+                                <b>Time: </b><span class="server-time">@api.Time</span><br />
+                            
+                        </div>
+                        j++;
+                    }
+                    <br />
+                }
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+<a asp-action="Index" asp-controller="Home">Back to Previous Menu</a>
+<script>
+    loadData = function () {
+        $.ajax({
+            url: '/ServerMonitor/GetServersDetailsInfo',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                // loop through the All data and fill the dropdown
+                console.log(data)
+                data.apiServers.forEach(function (item, index) {
+                    var htmlId = "API" + item.machineID;
+                    var targetDiv = document.getElementById(htmlId).getElementsByClassName("server-time")[0];
+                    targetDiv.textContent = item.time;
+                    if (item.pingResult == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "red";
+                    }
+                    if (item.pingResult == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                    if (item.isTimeInSync == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "orange";
+                    }
+                    if (item.isTimeInSync == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+
+                });
+                data.portalServers.forEach(function (item, index) {
+                    var htmlId = "PORTAL" + item.machineID;
+                    var targetDiv = document.getElementById(htmlId).getElementsByClassName("server-time")[0];
+                    targetDiv.textContent = item.time;
+                    if (item.pingResult == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "red";
+                    }
+                    if (item.pingResult == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                    if (item.isTimeInSync == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "orange";
+                    }
+                    if (item.isTimeInSync == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                });
+                data.lbServers.forEach(function (item, index) {
+                    console.log(index)
+                    var htmlId = "LB" + index;
+                    var targetDiv = document.getElementById(htmlId).getElementsByClassName("server-time")[0];
+                    targetDiv.textContent = item.time;
+                    if (item.pingResult == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "red";
+                    }
+                    if (item.pingResult == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                    if (item.isTimeInSync == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "orange";
+                    }
+                    if (item.isTimeInSync == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                });
+                data.timeServers.forEach(function (item, index) {
+                    var htmlId = "TServ" + index;
+                    var targetDiv = document.getElementById(htmlId).getElementsByClassName("server-time")[0];
+                    targetDiv.textContent = item.time;
+                    if (item.pingResult == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "red";
+                    }
+                    if (item.pingResult == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                    if (item.isTimeInSync == false) {
+                        document.getElementById(htmlId).style.backgroundColor = "orange";
+                    }
+                    if (item.isTimeInSync == true) {
+                        document.getElementById(htmlId).style.backgroundColor = "green";
+                    }
+                });
+            }
+        });
+    };
+    setInterval(function () {
+        loadData()
+    }, 8000);
+</script>
