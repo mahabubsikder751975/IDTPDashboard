@@ -36,15 +36,15 @@
             <canvas id="divmemoryChart"></canvas>
           </div>
            <br/>
+          <div id="divnetwork">
+            <h4> Network </h4>
+            <canvas id="divnetworkChart"></canvas>
+          </div>
           <div id="divdisk">
             <h4> Disk </h4>
             <canvas id="divdiskChart"></canvas>
           </div>
            <br/>
-          <div id="divnetwork">
-            <h4> Network </h4>
-            <canvas id="divnetworkChart"></canvas>
-          </div>
         </div>
   </div>
   
@@ -84,8 +84,14 @@ $(document).ready(function() {
           }],
             yAxes: [{
                 label:"Time",
+                display: true,
                 ticks: {
-                    beginAtZero:true
+                  min: 0,
+                  max: 100,
+                  //stepSize: 20
+
+                    //beginAtZero:true,
+                    //max:100,                    
                 }
             }]            
         },
@@ -123,7 +129,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "% Utilization",
+              label: "Memory Usage(gb)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -134,7 +140,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "% Utilization",
+            text: "Memory Usage(gb)",
             fontSize: 18
           }
         })    });
@@ -143,7 +149,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "% Utilization",
+              label: "Disk Usage(gb)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -154,7 +160,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "% Utilization",
+            text: "Disk Usage(gb)",
             fontSize: 18
           }
         })
@@ -164,7 +170,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "% Utilization",
+              label: "Throughput(kbps)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -175,7 +181,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "% Utilization",
+            text: "Throughput(kbps)",
             fontSize: 18
           }
         })
@@ -202,11 +208,11 @@ $(document).ready(function() {
         divcpuChartInstance.config.data.labels.push(time);
         divcpuChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['cpu'])});
         divmemoryChartInstance.config.data.labels.push(time);
-        divmemoryChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['memory'])});
+        divmemoryChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['memoryused'])});
         divdiskChartInstance.config.data.labels.push(time);
-        divdiskChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['disk'])});
+        divdiskChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['diskused'])});
         divnetworkChartInstance.config.data.labels.push(time);
-        divnetworkChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['network'])});
+        divnetworkChartInstance.config.data.datasets.forEach((dataset) =>{dataset.data.push(data['networkused'])});
         
 
         divcpuChartInstance.update();

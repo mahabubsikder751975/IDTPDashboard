@@ -259,9 +259,15 @@ namespace IDTPDashboards.Services
             return new PerformanceData()
             {
                 cpu=float.Parse(reader["CPU_Used_Percent"].ToString()),
+                memorytotal=float.Parse(reader["Memory_Total"].ToString()),
+                memoryused=float.Parse(reader["Memory_Used"].ToString()),
                 memory=float.Parse(reader["Memory_Used_Percent"].ToString()),
                 disk=float.Parse(reader["Disk_Used_Percent"].ToString()), 
+                diskused=float.Parse(reader["Disk_Used"].ToString()), 
+                disktotal=float.Parse(reader["Disk_Total"].ToString()), 
                 network=float.Parse(reader["Network_Used_Percent"].ToString()),
+                networkused=float.Parse(reader["Network_Used"].ToString()),
+                networktotal=float.Parse(reader["Network_Total"].ToString()),
                 machinename=reader["MachineName"].ToString(),
                 mCdate= DateTime.Parse(reader["MetricCollectionDate"].ToString())
             };

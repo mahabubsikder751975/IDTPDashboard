@@ -57,11 +57,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MonitorServerPerformance">Monitor Server Performance</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ServerMonitor">Monitor Servers Heartbeat</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ServerMonitor">Monitor Application Status</a>
                         </li>
 
                          <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ServerMonitor" asp-action="Index">Monitor Server Details</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ServerMonitor" asp-action="Index">Monitor Server Status</a>
                         </li>
                         
                     </ul>
@@ -71,13 +71,16 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div class="container">
+                @RenderBody()
+            </div>
+            
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - IDTPDashboards - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            @* &copy; 2021 - IDTPDashboards *@
         </div>
     </footer>
     <script src="~/js/site.js" asp-append-version="true"></script>

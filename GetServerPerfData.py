@@ -100,6 +100,8 @@ def bytes2human(n):
 def convert_to_gbit(value):
     return value/1024./1024./1024.
 
+def convert_to_mbit(value):
+    return value/1024./1024.
 # end def
   
 #
@@ -127,8 +129,8 @@ def savetodatabase():
         #59.152.61.37,11072
         #18.142.121.40,1433
         conn = pyodbc.connect('Driver={SQL Server};'
-                      'Server=59.152.61.37,11072;'
-                     'Database=testMirroring;'                  
+                      'Server=18.142.121.40,1433;'
+                     'Database=IDTPReportDB;'                  
                       'UID=sa; PWD=Techvision123@;', timeout=15)
                    
         #print("opening a connection cursor")
@@ -276,14 +278,14 @@ if __name__ == '__main__':
         pnic_before = psutil.net_io_counters(pernic=True)
     
         # sleep some interval so we can compute rates
-        interval = 0.2;
+        interval = 1.0;
         time.sleep(interval)
         
         tot_after = psutil.net_io_counters()
         pnic_after = psutil.net_io_counters(pernic=True)
         
-        network_total=convert_to_gbit(((tot_after.bytes_recv+tot_after.bytes_sent) + 
-        (tot_before.bytes_recv+tot_before.bytes_sent)))
+        network_total=convert_to_mbit(((tot_after.bytes_recv+tot_after.bytes_sent)/2 + 
+        (tot_before.bytes_recv+tot_before.bytes_sent)/2))
         # print ("Total Network Bandwidth: %15s" % network_total)        
         # print ("Total Network Bandwidth Usage: %15s" % network_usage)
         # start output:
@@ -291,8 +293,11 @@ if __name__ == '__main__':
         # print ("   sent: %-10s" % (bytes2human(tot_after.bytes_sent)));
         # print ("   recv: %-10s" % (bytes2human(tot_after.bytes_recv)));
         
-        network_usage= '%.6f' % (((tot_after.bytes_recv+tot_after.bytes_sent) - 
-        (tot_before.bytes_recv+tot_before.bytes_sent))/1024/1024/1024)
+        network_usage= '%.6f' % (((tot_after.bytes_recv+tot_after.bytes_sent)/2 - 
+        (tot_before.bytes_recv+tot_before.bytes_sent)/2)/1024)
+
+        # network_usage= '%.6f' % (((tot_after.bytes_recv+tot_after.bytes_sent) - 
+        # (tot_before.bytes_recv+tot_before.bytes_sent))/1024)
 
 
         network_usage_percent =  (((tot_after.bytes_recv+tot_after.bytes_sent) - 
