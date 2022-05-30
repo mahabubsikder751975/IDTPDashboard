@@ -23,6 +23,7 @@ E:\IDTPDashboard\ReleaseBin\wwwroot\css\alt\adminlte.plugins.css
 E:\IDTPDashboard\ReleaseBin\wwwroot\css\alt\adminlte.plugins.css.map
 E:\IDTPDashboard\ReleaseBin\wwwroot\css\alt\adminlte.plugins.min.css
 E:\IDTPDashboard\ReleaseBin\wwwroot\css\alt\adminlte.plugins.min.css.map
+E:\IDTPDashboard\ReleaseBin\wwwroot\css\ionicons.min.css
 E:\IDTPDashboard\ReleaseBin\wwwroot\css\site.css
 E:\IDTPDashboard\ReleaseBin\wwwroot\favicon.ico
 E:\IDTPDashboard\ReleaseBin\wwwroot\img\AdminLTELogo.png
@@ -2000,6 +2001,7 @@ E:\IDTPDashboard\ReleaseBin\wwwroot\plugins\uplot\uPlot.min.css
 E:\IDTPDashboard\ReleaseBin\appsettings.Development.json
 E:\IDTPDashboard\ReleaseBin\appsettings.json
 E:\IDTPDashboard\ReleaseBin\package-lock.json
+E:\IDTPDashboard\ReleaseBin\ServerConfigurations.json
 E:\IDTPDashboard\ReleaseBin\serverPerfDataGenerator - Copy.json
 E:\IDTPDashboard\ReleaseBin\serverPerfDataGenerator.json
 E:\IDTPDashboard\ReleaseBin\tree.json

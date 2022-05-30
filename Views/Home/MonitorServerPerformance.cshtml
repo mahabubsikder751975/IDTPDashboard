@@ -129,7 +129,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "Memory Usage(gb)",
+              label: "Memory Usage (GB)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -140,7 +140,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "Memory Usage(gb)",
+            text: "Memory Usage (GB)",
             fontSize: 18
           }
         })    });
@@ -149,7 +149,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "Disk Usage(gb)",
+              label: "Disk Usage (GB)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -160,7 +160,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "Disk Usage(gb)",
+            text: "Disk Usage (GB)",
             fontSize: 18
           }
         })
@@ -170,7 +170,7 @@ $(document).ready(function() {
         type: 'line',
         data: {
           datasets: [{
-              label: "Throughput(kbps)",
+              label: "Throughput (Kbps)",
               data: 0,
               fill: false,
               borderColor: '#343e9a',
@@ -181,7 +181,7 @@ $(document).ready(function() {
         options: Object.assign({}, commonOptions, {
           title:{
             display: true,
-            text: "Throughput(kbps)",
+            text: "Throughput (Kbps)",
             fontSize: 18
           }
         })
@@ -285,6 +285,7 @@ $(document).ready(function() {
     AddMachineDropDownList();      
 
     $("#machine-names").on("change",function () {
+                numberElements = 0;
                 updateData($("#machine-names option:selected").text());
       });             
 
