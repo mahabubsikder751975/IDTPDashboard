@@ -240,7 +240,7 @@ $(document).ready(function() {
       function(icpdata){
           removeData();
            //Globals
-          var updateCount = 0;
+          updateCount = 0;
           if(icpdata!='undefined'){
             if(icpdata.length>0){
               icpdata.forEach(obj => {
@@ -285,7 +285,6 @@ $(document).ready(function() {
     AddMachineDropDownList();      
 
     $("#machine-names").on("change",function () {
-                numberElements = 0;
                 updateData($("#machine-names option:selected").text());
       });             
 
