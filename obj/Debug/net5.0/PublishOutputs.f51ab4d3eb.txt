@@ -1998,9 +1998,20 @@ E:\IDTPDashboard\ReleaseBin\wwwroot\plugins\uplot\uPlot.esm.js
 E:\IDTPDashboard\ReleaseBin\wwwroot\plugins\uplot\uPlot.iife.js
 E:\IDTPDashboard\ReleaseBin\wwwroot\plugins\uplot\uPlot.iife.min.js
 E:\IDTPDashboard\ReleaseBin\wwwroot\plugins\uplot\uPlot.min.css
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\web.config
 E:\IDTPDashboard\ReleaseBin\appsettings.Development.json
 E:\IDTPDashboard\ReleaseBin\appsettings.json
 E:\IDTPDashboard\ReleaseBin\package-lock.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\appsettings.Development.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\appsettings.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\IDTPDashboards.deps.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\IDTPDashboards.runtimeconfig.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\package-lock.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\ServerConfigurations.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\serverPerfDataGenerator - Copy.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\serverPerfDataGenerator.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\tree.json
+E:\IDTPDashboard\ReleaseBin\ReleaseBin\wwwroot\js\.eslintrc.json
 E:\IDTPDashboard\ReleaseBin\ServerConfigurations.json
 E:\IDTPDashboard\ReleaseBin\serverPerfDataGenerator - Copy.json
 E:\IDTPDashboard\ReleaseBin\serverPerfDataGenerator.json

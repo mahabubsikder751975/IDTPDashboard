@@ -250,3 +250,14 @@ E:\IDTPDashboard\bin\Debug\net5.0\Renci.SshNet.dll
 E:\IDTPDashboard\bin\Debug\net5.0\SshNet.Security.Cryptography.dll
 E:\IDTPDashboard\obj\Debug\net5.0\Razor\Views\ServerMonitor\Index.cshtml.g.cs
 E:\IDTPDashboard\bin\Debug\net5.0\ServerConfigurations.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\web.config
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.Development.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\appsettings.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.deps.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\IDTPDashboards.runtimeconfig.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\package-lock.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\ServerConfigurations.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\serverPerfDataGenerator - Copy.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\serverPerfDataGenerator.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\tree.json
+E:\IDTPDashboard\bin\Debug\net5.0\ReleaseBin\wwwroot\js\.eslintrc.json
