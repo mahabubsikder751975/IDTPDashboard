@@ -1,0 +1,63 @@
+{
+  "SourceLocation": "D:\\LatestRelease",
+  "IDTPPortalConfig": [
+    {
+      "MachineIP": "192.168.1.13",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    },
+    {
+      "MachineIP": "192.168.1.14",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    }
+  ],
+  "IDTPServerConfig": [
+    {
+      "MachineIP": "192.168.1.15",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    },
+    {
+      "MachineIP": "192.168.1.16",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    }
+  ],
+  "LBServerConfig": [
+    {
+      "MachineIP": "192.168.1.11",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    },
+    {
+      "MachineIP": "192.168.1.12",
+      "UserName": "orion",
+      "Password": "Techvision123?",
+      "SSHPort": "22"
+    }
+  ],
+  "TimeServerConfig": [],
+  "IDTPDatabaseConfig": [
+    {
+      "MachineIP": "192.168.1.17",
+      "UserName": "sa",
+      "Password": "Techvision123@"
+    },
+    {
+      "MachineIP": "192.168.1.18",
+      "UserName": "sa",
+      "Password": "Techvision123@"
+    }
+  ],
+  "TestingMachineUserName": "orion",
+  "TestingMachinePassword": "Techvision123?",
+  "TestingMachinePort": 22,
+  "TestingDatabaseUserName": "sa",
+  "TestingDatabasePassword": "Techvision123@"
+}

@@ -29,12 +29,12 @@ namespace SuperAdminPortal.Controllers
         private ServerDetailsViewModel GetServersDetails()
         {
             ServerDetailsViewModel detailsViewModel = new();
-            ServerInfo serverInfo;
-            using (StreamReader r = new StreamReader("ServerConfigurations.json"))
-            {
-                string json = r.ReadToEnd();
-                serverInfo = JsonConvert.DeserializeObject<ServerInfo>(json);
-            }
+            //ServerInfo serverInfo;
+            //using (StreamReader r = new StreamReader("ServerConfigurations.json"))
+            //{
+            //    string json = r.ReadToEnd();
+            //    serverInfo = JsonConvert.DeserializeObject<ServerInfo>(json);
+            //}
 
             DeploymentDetailsInfo deploymentDetails = new();
             using (StreamReader r = new StreamReader("DeploymentDetailsConfiguration.json"))
@@ -248,15 +248,23 @@ namespace SuperAdminPortal.Controllers
         }
         private bool ValidateTimeInSync(string time)
         {
-            //var timenow = DateTime.Now;
-            //var timeInServer = Convert.ToDateTime(time);
-            ////Console.WriteLine($"Time local: {timenow}, Time Server {timeInServer}, Time diff: {(timenow - timeInServer).TotalSeconds}");
-            //if ((timenow - Convert.ToDateTime(time)).TotalSeconds > 30 || (timenow - Convert.ToDateTime(time)).TotalSeconds < -30)
-            //{
-            //    return false;
-            //}
-            //return true;
-            return true;
+            try
+            {
+                var timenow = DateTime.Now;
+                var timeInServer = Convert.ToDateTime(time);
+                //Console.WriteLine($"Time local: {timenow}, Time Server {timeInServer}, Time diff: {(timenow - timeInServer).TotalSeconds}");
+                if ((timenow - Convert.ToDateTime(time)).TotalSeconds > 30 || (timenow - Convert.ToDateTime(time)).TotalSeconds < -30)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception occured, time: {time}, Ex: {ex.Message}");
+                return true;
+            }
+            
         }
 
         private ServerDetails GetServerInfoSSHNet(MachineInfo item)
