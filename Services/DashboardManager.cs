@@ -92,7 +92,7 @@ namespace IDTPDashboards.Services
                 var url=new Uri(ipadress+'/'+Constants.APIEndPoints.TESTHELLO);
                 var response = HttpClientHelper.Get(url);
                 
-                if (response.StatusCode=200)	
+                if (response.StatusCode==200)	
                 	return true;
 			    else
 				    return false;
